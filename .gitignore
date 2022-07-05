@@ -1,4 +1,6 @@
-.DS_Store
-.idea
+# dependencies
 /node_modules/
 
+# misc
+.DS_Store
+.idea
