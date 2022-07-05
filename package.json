@@ -1,0 +1,31 @@
+{
+  "name": "bearloan-official-website",
+  "version": "1.0.0",
+  "description": "Web layout",
+  "main": "index.js",
+  "repository": "git@github.com:huberthsieh/bearloan-official-website.git",
+  "author": "Hubert Hsieh",
+  "license": "Hubert Hsieh",
+  "private": true,
+  "devDependencies": {
+    "browser-sync": "^2.27.10",
+    "del": "^6.1.1",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-load-plugins": "^2.0.7",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-watch": "^5.0.1",
+    "sass": "^1.53.0"
+  },
+  "dependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build",
+    "start": "gulp",
+    "deploy": "gulp deploy"
+  }
+}

@@ -1,0 +1,5 @@
+@import "common/_reset.css";
+a {
+  color: black;
+  text-decoration: unset;
+}
