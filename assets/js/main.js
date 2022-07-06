@@ -1,8 +1,12 @@
-const aaa = $('h2');
+const handleJarallax = () => {
+    $('.jarallax').jarallax({
+        speed: 0.2,
+    });
+}
 
 $(document).ready(function () {
 
-    console.log('aaabbbccc: ', aaa);
+    handleJarallax();
 
     console.log(`
         ⣿⣿⣿⣿⣿⠟⠋⠄⠄⠄⠄⠄⠄⠄⢁⠈⢻⢿⣿⣿⣿⣿⣿⣿⣿

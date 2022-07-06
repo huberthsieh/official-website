@@ -1,4 +1,4 @@
-const aaa=$("h2");$(document).ready(function(){console.log("aaabbbccc: ",aaa),console.log(`
+const handleJarallax=()=>{$(".jarallax").jarallax({speed:.2})};$(document).ready(function(){handleJarallax(),console.log(`
         ⣿⣿⣿⣿⣿⠟⠋⠄⠄⠄⠄⠄⠄⠄⢁⠈⢻⢿⣿⣿⣿⣿⣿⣿⣿
         ⣿⣿⣿⣿⣿⠃⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⡀⠭⢿⣿⣿⣿⣿
         ⣿⣿⣿⣿⡟⠄⢀⣾⣿⣿⣿⣷⣶⣿⣷⣶⣶⡆⠄⠄⠄⣿⣿⣿⣿
