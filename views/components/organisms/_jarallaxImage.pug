@@ -1,0 +1,7 @@
+mixin jarallaxImage(src, alt, speed)
+    - speed = speed || 0
+    .jarallax(
+        data-style="image"
+        data-speed=speed
+    )
+        img.jarallax-img(src=src alt=alt)

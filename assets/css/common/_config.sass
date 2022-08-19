@@ -1,0 +1,117 @@
+html
+    *
+        font-family: "Helvetica", "Arial", "Noto Sans TC", sans-serif
+        font-size: 1.4rem
+
+.content
+    overflow: hidden
+
+.color-black
+    color: $black
+
+.color-white
+    color: #FFFFFF
+
+.color-main
+    color: $main
+
+.pt-100
+    padding-top: 100px
+
+.pt-200
+    padding-top: 200px
+
+.pt-300
+    padding-top: 300px
+
+.pb-100
+    padding-bottom: 100px
+
+.pb-200
+    padding-bottom: 200px
+
+.pb-300
+    padding-bottom: 300px
+
+.mt-100
+    margin-top: 100px
+
+.mt-200
+    margin-top: 200px
+
+.mt-300
+    margin-top: 300px
+
+.mb-100
+    margin-bottom: 100px
+
+.mb-200
+    margin-bottom: 200px
+
+.mb-300
+    margin-bottom: 300px
+
+.minus-mt-100.minus-mt-100
+    margin-top: -100px
+
+.m-auto
+    margin: 0 auto
+
+.d-block
+    display: block
+
+.before-block
+    &:before
+        content: ""
+        width: 200%
+        height: 100%
+        display: block
+        background-color: white
+        position: absolute
+        right: 0
+        top: 0
+
+.d-flex
+    display: flex
+    &.justify-end
+        justify-content: flex-end
+
+    &.justify-between
+        justify-content: space-between
+
+.after-block
+    &:after
+        content: ""
+        width: 200%
+        height: 100%
+        display: block
+        background-color: $main-light
+        position: absolute
+        z-index: -1
+        left: 0
+        top: 100px
+        transform: scaleX(0)
+        transform-origin: left
+        transition: transform .6s cubic-bezier(.41,.05,.94,.65)
+
+    &.block-in:after
+        transform: scaleX(1)
+
+
+.font-weight-300
+    font-weight: 300
+
+.opacity-0
+    opacity: 0
+
+.absolute-center.absolute-center
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    z-index: 2
+
+
+
+

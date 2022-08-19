@@ -1,0 +1,78 @@
+.section
+    +size(100%, auto)
+    position: relative
+
+    &.banner
+        position: relative
+
+    &.background
+        height: 600px
+
+        .jarallax
+            height: 100%
+
+    &__inner
+        width: 100%
+        height: 100%
+        max-width: 1040px
+        //margin: 0 auto
+        position: relative
+        z-index: 1
+
+        &.before-effect
+            &:before
+                content: ""
+                +size(200%, 100%)
+                position: absolute
+                right: 130px
+                top: 0
+                background-color: $main-light
+                transition: transform .4s cubic-bezier(.41,.05,.94,.65)
+                transform-origin: right
+                transform: scaleX(0)
+
+        &.slide-in-right
+            &:before
+                transform: scaleX(1)
+
+            //& ~ .img_dec
+            //    opacity: 1
+            //
+            //    &:before
+            //        animation-name: overLay-mask-right
+            //        animation-timing-function: cubic-bezier(0.1, 0.5, 0.2, 1)
+            //        animation-duration: 1s
+            //        animation-fill-mode: forwards
+
+        .txt
+            position: relative
+            z-index: 10
+            width: 48%
+            max-width: 430px
+
+            &__title
+                margin-bottom: 55px
+                margin-left: -2px
+                position: relative
+
+            .en
+                font-size: 14px
+                font-size: 1.4rem
+                line-height: 1
+                letter-spacing: .04em
+                margin-bottom: 20px
+                padding-left: 2px
+
+            .tw
+                font-size: 40px
+                font-size: 4rem
+                line-height: 1
+                letter-spacing: .1em
+
+            .desc
+                width: 100%
+                font-size: 15px
+                font-size: 1.5rem
+                line-height: 2
+                letter-spacing: .06em
+                margin-bottom: 50px

@@ -1,1 +1,1218 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e="undefined"!=typeof globalThis?globalThis:e||self).jarallaxVideo=t()}(this,function(){"use strict";let e;var n=e="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{};function t(){this.doneCallbacks=[],this.failCallbacks=[]}t.prototype={execute(e,t){let o=e.length;for(t=Array.prototype.slice.call(t);o;)e[--o].apply(null,t)},resolve(...e){this.execute(this.doneCallbacks,e)},reject(...e){this.execute(this.failCallbacks,e)},done(e){this.doneCallbacks.push(e)},fail(e){this.failCallbacks.push(e)}};let i=0,a=0,l=0,o=0,r=0;const s=new t,p=new t;class d{constructor(e,t){var o=this;o.url=e,o.options_default={autoplay:!1,loop:!1,mute:!1,volume:100,showControls:!0,accessibilityHidden:!1,startTime:0,endTime:0},o.options=o.extend({},o.options_default,t),void 0!==o.options.showContols&&(o.options.showControls=o.options.showContols,delete o.options.showContols),o.videoID=o.parseURL(e),o.videoID&&(o.ID=i,i+=1,o.loadAPI(),o.init())}extend(...o){const i=o[0]||{};return Object.keys(o).forEach(t=>{o[t]&&Object.keys(o[t]).forEach(e=>{i[e]=o[t][e]})}),i}parseURL(e){var t=!(!(t=(t=e).match(/.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/))||11!==t[1].length)&&t[1],o=!(!(o=(o=e).match(/https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/))||!o[3])&&o[3],e=function(e){const t=e.split(/,(?=mp4\:|webm\:|ogv\:|ogg\:)/),o={};let i=0;return t.forEach(e=>{e=e.match(/^(mp4|webm|ogv|ogg)\:(.*)/);e&&e[1]&&e[2]&&(o["ogv"===e[1]?"ogg":e[1]]=e[2],i=1)}),!!i&&o}(e);return t?(this.type="youtube",t):o?(this.type="vimeo",o):!!e&&(this.type="local",e)}isValid(){return!!this.videoID}on(e,t){this.userEventsList=this.userEventsList||[],(this.userEventsList[e]||(this.userEventsList[e]=[])).push(t)}off(o,i){this.userEventsList&&this.userEventsList[o]&&(i?this.userEventsList[o].forEach((e,t)=>{e===i&&(this.userEventsList[o][t]=!1)}):delete this.userEventsList[o])}fire(e,...t){this.userEventsList&&void 0!==this.userEventsList[e]&&this.userEventsList[e].forEach(e=>{e&&e.apply(this,t)})}play(e){const t=this;t.player&&("youtube"===t.type&&t.player.playVideo&&(void 0!==e&&t.player.seekTo(e||0),n.YT.PlayerState.PLAYING!==t.player.getPlayerState()&&t.player.playVideo()),"vimeo"===t.type&&(void 0!==e&&t.player.setCurrentTime(e),t.player.getPaused().then(e=>{e&&t.player.play()})),"local"===t.type&&(void 0!==e&&(t.player.currentTime=e),t.player.paused&&t.player.play()))}pause(){const t=this;t.player&&("youtube"===t.type&&t.player.pauseVideo&&n.YT.PlayerState.PLAYING===t.player.getPlayerState()&&t.player.pauseVideo(),"vimeo"===t.type&&t.player.getPaused().then(e=>{e||t.player.pause()}),"local"!==t.type||t.player.paused||t.player.pause())}mute(){var e=this;e.player&&("youtube"===e.type&&e.player.mute&&e.player.mute(),"vimeo"===e.type&&e.player.setVolume&&e.player.setVolume(0),"local"===e.type&&(e.$video.muted=!0))}unmute(){var e=this;e.player&&("youtube"===e.type&&e.player.mute&&e.player.unMute(),"vimeo"===e.type&&e.player.setVolume&&e.player.setVolume(e.options.volume),"local"===e.type&&(e.$video.muted=!1))}setVolume(e=!1){var t=this;t.player&&e&&("youtube"===t.type&&t.player.setVolume&&t.player.setVolume(e),"vimeo"===t.type&&t.player.setVolume&&t.player.setVolume(e),"local"===t.type&&(t.$video.volume=e/100))}getVolume(t){var e=this;e.player?("youtube"===e.type&&e.player.getVolume&&t(e.player.getVolume()),"vimeo"===e.type&&e.player.getVolume&&e.player.getVolume().then(e=>{t(e)}),"local"===e.type&&t(100*e.$video.volume)):t(!1)}getMuted(t){var e=this;e.player?("youtube"===e.type&&e.player.isMuted&&t(e.player.isMuted()),"vimeo"===e.type&&e.player.getVolume&&e.player.getVolume().then(e=>{t(!!e)}),"local"===e.type&&t(e.$video.muted)):t(null)}getImageURL(t){const o=this;if(o.videoImage)t(o.videoImage);else{if("youtube"===o.type){const i=["maxresdefault","sddefault","hqdefault","0"];let e=0;const a=new Image;a.onload=function(){120!==(this.naturalWidth||this.width)||e===i.length-1?(o.videoImage=`https://img.youtube.com/vi/${o.videoID}/${i[e]}.jpg`,t(o.videoImage)):(e+=1,this.src=`https://img.youtube.com/vi/${o.videoID}/${i[e]}.jpg`)},a.src=`https://img.youtube.com/vi/${o.videoID}/${i[e]}.jpg`}if("vimeo"===o.type){let e=new XMLHttpRequest;e.open("GET","https://vimeo.com/api/oembed.json?url="+o.url,!0),e.onreadystatechange=function(){var e;4===this.readyState&&200<=this.status&&this.status<400&&((e=JSON.parse(this.responseText)).thumbnail_url&&(o.videoImage=e.thumbnail_url,t(o.videoImage)))},e.send(),e=null}}}getIframe(e){this.getVideo(e)}getVideo(t){const l=this;l.$video?t(l.$video):l.onAPIready(()=>{let e;if(l.$video||((e=document.createElement("div")).style.display="none"),"youtube"===l.type){l.playerOptions={host:"https://www.youtube-nocookie.com",videoId:l.videoID,playerVars:{autohide:1,rel:0,autoplay:0,playsinline:1}},l.options.showControls||(l.playerOptions.playerVars.iv_load_policy=3,l.playerOptions.playerVars.modestbranding=1,l.playerOptions.playerVars.controls=0,l.playerOptions.playerVars.showinfo=0,l.playerOptions.playerVars.disablekb=1);let t,o;l.playerOptions.events={onReady(t){l.options.mute?t.target.mute():l.options.volume&&t.target.setVolume(l.options.volume),l.options.autoplay&&l.play(l.options.startTime),l.fire("ready",t),l.options.loop&&!l.options.endTime&&(l.options.endTime=l.player.getDuration()-.1),setInterval(()=>{l.getVolume(e=>{l.options.volume!==e&&(l.options.volume=e,l.fire("volumechange",t))})},150)},onStateChange(e){l.options.loop&&e.data===n.YT.PlayerState.ENDED&&l.play(l.options.startTime),t||e.data!==n.YT.PlayerState.PLAYING||(t=1,l.fire("started",e)),e.data===n.YT.PlayerState.PLAYING&&l.fire("play",e),e.data===n.YT.PlayerState.PAUSED&&l.fire("pause",e),e.data===n.YT.PlayerState.ENDED&&l.fire("ended",e),e.data===n.YT.PlayerState.PLAYING?o=setInterval(()=>{l.fire("timeupdate",e),l.options.endTime&&l.player.getCurrentTime()>=l.options.endTime&&(l.options.loop?l.play(l.options.startTime):l.pause())},150):clearInterval(o)},onError(e){l.fire("error",e)}};var i=!l.$video;if(i){const a=document.createElement("div");a.setAttribute("id",l.playerID),e.appendChild(a),document.body.appendChild(e)}l.player=l.player||new n.YT.Player(l.playerID,l.playerOptions),i&&(l.$video=document.getElementById(l.playerID),l.options.accessibilityHidden&&(l.$video.setAttribute("tabindex","-1"),l.$video.setAttribute("aria-hidden","true")),l.videoWidth=parseInt(l.$video.getAttribute("width"),10)||1280,l.videoHeight=parseInt(l.$video.getAttribute("height"),10)||720)}if("vimeo"===l.type){if(l.playerOptions={dnt:1,id:l.videoID,autopause:0,transparent:0,autoplay:l.options.autoplay?1:0,loop:l.options.loop?1:0,muted:l.options.mute?1:0},l.options.volume&&(l.playerOptions.volume=l.options.volume),l.options.showControls||(l.playerOptions.badge=0,l.playerOptions.byline=0,l.playerOptions.portrait=0,l.playerOptions.title=0,l.playerOptions.background=1),!l.$video){let t="";Object.keys(l.playerOptions).forEach(e=>{""!==t&&(t+="&"),t+=e+"="+encodeURIComponent(l.playerOptions[e])}),l.$video=document.createElement("iframe"),l.$video.setAttribute("id",l.playerID),l.$video.setAttribute("src",`https://player.vimeo.com/video/${l.videoID}?`+t),l.$video.setAttribute("frameborder","0"),l.$video.setAttribute("mozallowfullscreen",""),l.$video.setAttribute("allowfullscreen",""),l.$video.setAttribute("title","Vimeo video player"),l.options.accessibilityHidden&&(l.$video.setAttribute("tabindex","-1"),l.$video.setAttribute("aria-hidden","true")),e.appendChild(l.$video),document.body.appendChild(e)}l.player=l.player||new n.Vimeo.Player(l.$video,l.playerOptions),l.options.startTime&&l.options.autoplay&&l.player.setCurrentTime(l.options.startTime),l.player.getVideoWidth().then(e=>{l.videoWidth=e||1280}),l.player.getVideoHeight().then(e=>{l.videoHeight=e||720});let t;l.player.on("timeupdate",e=>{t||(l.fire("started",e),t=1),l.fire("timeupdate",e),l.options.endTime&&l.options.endTime&&e.seconds>=l.options.endTime&&(l.options.loop?l.play(l.options.startTime):l.pause())}),l.player.on("play",e=>{l.fire("play",e),l.options.startTime&&0===e.seconds&&l.play(l.options.startTime)}),l.player.on("pause",e=>{l.fire("pause",e)}),l.player.on("ended",e=>{l.fire("ended",e)}),l.player.on("loaded",e=>{l.fire("ready",e)}),l.player.on("volumechange",e=>{l.fire("volumechange",e)}),l.player.on("error",e=>{l.fire("error",e)})}if("local"===l.type){l.$video||(l.$video=document.createElement("video"),l.options.showControls&&(l.$video.controls=!0),l.options.mute?l.$video.muted=!0:l.$video.volume&&(l.$video.volume=l.options.volume/100),l.options.loop&&(l.$video.loop=!0),l.$video.setAttribute("playsinline",""),l.$video.setAttribute("webkit-playsinline",""),l.options.accessibilityHidden&&(l.$video.setAttribute("tabindex","-1"),l.$video.setAttribute("aria-hidden","true")),l.$video.setAttribute("id",l.playerID),e.appendChild(l.$video),document.body.appendChild(e),Object.keys(l.videoID).forEach(e=>{{var t=l.$video,o=l.videoID[e];e="video/"+e;const i=document.createElement("source");return i.src=o,i.type=e,void t.appendChild(i)}})),l.player=l.player||l.$video;let t;l.player.addEventListener("playing",e=>{t||l.fire("started",e),t=1}),l.player.addEventListener("timeupdate",function(e){l.fire("timeupdate",e),l.options.endTime&&l.options.endTime&&this.currentTime>=l.options.endTime&&(l.options.loop?l.play(l.options.startTime):l.pause())}),l.player.addEventListener("play",e=>{l.fire("play",e)}),l.player.addEventListener("pause",e=>{l.fire("pause",e)}),l.player.addEventListener("ended",e=>{l.fire("ended",e)}),l.player.addEventListener("loadedmetadata",function(){l.videoWidth=this.videoWidth||1280,l.videoHeight=this.videoHeight||720,l.fire("ready"),l.options.autoplay&&l.play(l.options.startTime)}),l.player.addEventListener("volumechange",e=>{l.getVolume(e=>{l.options.volume=e}),l.fire("volumechange",e)}),l.player.addEventListener("error",e=>{l.fire("error",e)})}t(l.$video)})}init(){this.playerID="VideoWorker-"+this.ID}loadAPI(){if(!a||!l){let o="";if("youtube"!==this.type||a||(a=1,o="https://www.youtube.com/iframe_api"),"vimeo"===this.type&&!l){if(l=1,void 0!==n.Vimeo)return;o="https://player.vimeo.com/api/player.js"}if(o){let e=document.createElement("script"),t=document.getElementsByTagName("head")[0];e.src=o,t.appendChild(e),t=null,e=null}}}onAPIready(e){if("youtube"===this.type&&(void 0!==n.YT&&0!==n.YT.loaded||o?"object"==typeof n.YT&&1===n.YT.loaded?e():s.done(()=>{e()}):(o=1,n.onYouTubeIframeAPIReady=function(){n.onYouTubeIframeAPIReady=null,s.resolve("done"),e()})),"vimeo"===this.type)if(void 0!==n.Vimeo||r)void 0!==n.Vimeo?e():p.done(()=>{e()});else{r=1;const t=setInterval(()=>{void 0!==n.Vimeo&&(clearInterval(t),p.resolve("done"),e())},20)}"local"===this.type&&e()}}let u;var y,m=u="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:{};function v(e=m.jarallax){if(void 0!==e){const t=e.constructor,i=t.prototype.onScroll,o=(t.prototype.onScroll=function(){const o=this;i.apply(o),o.isVideoInserted||!o.video||o.options.videoLazyLoading&&!o.isElementInViewport||o.options.disableVideo()||(o.isVideoInserted=!0,o.video.getVideo(e=>{const t=e.parentNode;o.css(e,{position:o.image.position,top:"0px",left:"0px",right:"0px",bottom:"0px",width:"100%",height:"100%",maxWidth:"none",maxHeight:"none",pointerEvents:"none",transformStyle:"preserve-3d",backfaceVisibility:"hidden",willChange:"transform,opacity",margin:0,zIndex:-1}),o.$video=e,"local"===o.video.type&&(o.image.src?o.$video.setAttribute("poster",o.image.src):o.image.$item&&"IMG"===o.image.$item.tagName&&o.image.$item.src&&o.$video.setAttribute("poster",o.image.$item.src)),o.image.$container.appendChild(e),t.parentNode.removeChild(t),o.options.onVideoInsert&&o.options.onVideoInsert.call(o)}))},t.prototype.coverImage),a=(t.prototype.coverImage=function(){var a=this,l=o.apply(a),n=!!a.image.$item&&a.image.$item.nodeName;if(l&&a.video&&n&&("IFRAME"===n||"VIDEO"===n)){let e=l.image.height,t=e*a.image.width/a.image.height,o=(l.container.width-t)/2,i=l.image.marginTop;l.container.width>t&&(t=l.container.width,e=t*a.image.height/a.image.width,o=0,i+=(l.image.height-e)/2),"IFRAME"===n&&(e+=400,i-=200),a.css(a.$video,{width:t+"px",marginLeft:o+"px",height:e+"px",marginTop:i+"px"})}return l},t.prototype.initImg),l=(t.prototype.initImg=function(){var e=this,t=a.apply(e);return e.options.videoSrc||(e.options.videoSrc=e.$item.getAttribute("data-jarallax-video")||null),e.options.videoSrc?(e.defaultInitImgResult=t,!0):t},t.prototype.canInitParallax),n=(t.prototype.canInitParallax=function(){const o=this;let e=l.apply(o);if(o.options.videoSrc){const i=new d(o.options.videoSrc,{autoplay:!0,loop:o.options.videoLoop,showControls:!1,accessibilityHidden:!0,startTime:o.options.videoStartTime||0,endTime:o.options.videoEndTime||0,mute:o.options.videoVolume?0:1,volume:o.options.videoVolume||0});if(o.options.onVideoWorkerInit&&o.options.onVideoWorkerInit.call(o,i),i.isValid())if(this.options.disableParallax()&&(e=!0,o.image.position="absolute",o.options.type="scroll",o.options.speed=1),e){if(i.on("ready",()=>{if(o.options.videoPlayOnlyVisible){const e=o.onScroll;o.onScroll=function(){e.apply(o),o.videoError||!o.options.videoLoop&&(o.options.videoLoop||o.videoEnded)||(o.isVisible()?i.play():i.pause())}}else i.play()}),i.on("started",()=>{o.image.$default_item=o.image.$item,o.image.$item=o.$video,o.image.width=o.video.videoWidth||1280,o.image.height=o.video.videoHeight||720,o.coverImage(),o.onScroll(),o.image.$default_item&&(o.image.$default_item.style.display="none")}),i.on("ended",()=>{o.videoEnded=!0,o.options.videoLoop||t()}),i.on("error",()=>{o.videoError=!0,t()}),o.video=i,!o.defaultInitImgResult&&(o.image.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","local"!==i.type))return i.getImageURL(e=>{o.image.bgImage=`url("${e}")`,o.init()}),!1}else o.defaultInitImgResult||i.getImageURL(e=>{var t=o.$item.getAttribute("style");t&&o.$item.setAttribute("data-jarallax-original-styles",t),o.css(o.$item,{"background-image":`url("${e}")`,"background-position":"center","background-size":"cover"})});function t(){o.image.$default_item&&(o.image.$item=o.image.$default_item,o.image.$item.style.display="block",o.coverImage(),o.onScroll())}}return e},t.prototype.destroy);t.prototype.destroy=function(){var e=this;e.image.$default_item&&(e.image.$item=e.image.$default_item,delete e.image.$default_item),n.apply(e)}}}return v(),y=()=>{void 0!==m.jarallax&&m.jarallax(document.querySelectorAll("[data-jarallax-video]"))},"complete"===document.readyState||"interactive"===document.readyState?y():document.addEventListener("DOMContentLoaded",y,{capture:!0,once:!0,passive:!0}),m.VideoWorker||(m.VideoWorker=d),v});
+/*!
+ * Video Extension for Jarallax v2.0.3 (https://github.com/nk-o/jarallax)
+ * Copyright 2022 nK <https://nkdev.info>
+ * Licensed under MIT (https://github.com/nk-o/jarallax/blob/master/LICENSE)
+ */
+
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.jarallaxVideo = factory());
+})(this, (function () { 'use strict';
+
+  /*!
+   * Name    : Video Worker
+   * Version : 2.0.0
+   * Author  : nK <https://nkdev.info>
+   * GitHub  : https://github.com/nk-o/video-worker
+   */
+
+  /* eslint-disable import/no-mutable-exports */
+
+  /* eslint-disable no-restricted-globals */
+  let win$1;
+
+  if (typeof window !== 'undefined') {
+    win$1 = window;
+  } else if (typeof global !== 'undefined') {
+    win$1 = global;
+  } else if (typeof self !== 'undefined') {
+    win$1 = self;
+  } else {
+    win$1 = {};
+  }
+
+  var global$1$1 = win$1; // Deferred
+  // thanks http://stackoverflow.com/questions/18096715/implement-deferred-object-without-using-jquery
+
+  function Deferred() {
+    this.doneCallbacks = [];
+    this.failCallbacks = [];
+  }
+
+  Deferred.prototype = {
+    execute(list, args) {
+      let i = list.length; // eslint-disable-next-line no-param-reassign
+
+      args = Array.prototype.slice.call(args);
+
+      while (i) {
+        i -= 1;
+        list[i].apply(null, args);
+      }
+    },
+
+    resolve(...args) {
+      this.execute(this.doneCallbacks, args);
+    },
+
+    reject(...args) {
+      this.execute(this.failCallbacks, args);
+    },
+
+    done(callback) {
+      this.doneCallbacks.push(callback);
+    },
+
+    fail(callback) {
+      this.failCallbacks.push(callback);
+    }
+
+  };
+  let ID = 0;
+  let YoutubeAPIadded = 0;
+  let VimeoAPIadded = 0;
+  let loadingYoutubePlayer = 0;
+  let loadingVimeoPlayer = 0;
+  const loadingYoutubeDefer = /*#__PURE__*/new Deferred();
+  const loadingVimeoDefer = /*#__PURE__*/new Deferred();
+
+  class VideoWorker {
+    constructor(url, options) {
+      const self = this;
+      self.url = url;
+      self.options_default = {
+        autoplay: false,
+        loop: false,
+        mute: false,
+        volume: 100,
+        showControls: true,
+        accessibilityHidden: false,
+        // start / end video time in seconds
+        startTime: 0,
+        endTime: 0
+      };
+      self.options = self.extend({}, self.options_default, options); // Fix wrong option name.
+      // Thanks to https://github.com/nk-o/video-worker/issues/13.
+
+      if (typeof self.options.showContols !== 'undefined') {
+        self.options.showControls = self.options.showContols;
+        delete self.options.showContols;
+      } // check URL
+
+
+      self.videoID = self.parseURL(url); // init
+
+      if (self.videoID) {
+        self.ID = ID;
+        ID += 1;
+        self.loadAPI();
+        self.init();
+      }
+    } // Extend like jQuery.extend
+    // eslint-disable-next-line class-methods-use-this
+
+
+    extend(...args) {
+      const out = args[0] || {};
+      Object.keys(args).forEach(i => {
+        if (!args[i]) {
+          return;
+        }
+
+        Object.keys(args[i]).forEach(key => {
+          out[key] = args[i][key];
+        });
+      });
+      return out;
+    }
+
+    parseURL(url) {
+      // parse youtube ID
+      function getYoutubeID(ytUrl) {
+        // eslint-disable-next-line no-useless-escape
+        const regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
+        const match = ytUrl.match(regExp);
+        return match && match[1].length === 11 ? match[1] : false;
+      } // parse vimeo ID
+
+
+      function getVimeoID(vmUrl) {
+        // eslint-disable-next-line no-useless-escape
+        const regExp = /https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/;
+        const match = vmUrl.match(regExp);
+        return match && match[3] ? match[3] : false;
+      } // parse local string
+
+
+      function getLocalVideos(locUrl) {
+        // eslint-disable-next-line no-useless-escape
+        const videoFormats = locUrl.split(/,(?=mp4\:|webm\:|ogv\:|ogg\:)/);
+        const result = {};
+        let ready = 0;
+        videoFormats.forEach(val => {
+          // eslint-disable-next-line no-useless-escape
+          const match = val.match(/^(mp4|webm|ogv|ogg)\:(.*)/);
+
+          if (match && match[1] && match[2]) {
+            // eslint-disable-next-line prefer-destructuring
+            result[match[1] === 'ogv' ? 'ogg' : match[1]] = match[2];
+            ready = 1;
+          }
+        });
+        return ready ? result : false;
+      }
+
+      const Youtube = getYoutubeID(url);
+      const Vimeo = getVimeoID(url);
+      const Local = getLocalVideos(url);
+
+      if (Youtube) {
+        this.type = 'youtube';
+        return Youtube;
+      }
+
+      if (Vimeo) {
+        this.type = 'vimeo';
+        return Vimeo;
+      }
+
+      if (Local) {
+        this.type = 'local';
+        return Local;
+      }
+
+      return false;
+    }
+
+    isValid() {
+      return !!this.videoID;
+    } // events
+
+
+    on(name, callback) {
+      this.userEventsList = this.userEventsList || []; // add new callback in events list
+
+      (this.userEventsList[name] || (this.userEventsList[name] = [])).push(callback);
+    }
+
+    off(name, callback) {
+      if (!this.userEventsList || !this.userEventsList[name]) {
+        return;
+      }
+
+      if (!callback) {
+        delete this.userEventsList[name];
+      } else {
+        this.userEventsList[name].forEach((val, key) => {
+          if (val === callback) {
+            this.userEventsList[name][key] = false;
+          }
+        });
+      }
+    }
+
+    fire(name, ...args) {
+      if (this.userEventsList && typeof this.userEventsList[name] !== 'undefined') {
+        this.userEventsList[name].forEach(val => {
+          // call with all arguments
+          if (val) {
+            val.apply(this, args);
+          }
+        });
+      }
+    }
+
+    play(start) {
+      const self = this;
+
+      if (!self.player) {
+        return;
+      }
+
+      if (self.type === 'youtube' && self.player.playVideo) {
+        if (typeof start !== 'undefined') {
+          self.player.seekTo(start || 0);
+        }
+
+        if (global$1$1.YT.PlayerState.PLAYING !== self.player.getPlayerState()) {
+          self.player.playVideo();
+        }
+      }
+
+      if (self.type === 'vimeo') {
+        if (typeof start !== 'undefined') {
+          self.player.setCurrentTime(start);
+        }
+
+        self.player.getPaused().then(paused => {
+          if (paused) {
+            self.player.play();
+          }
+        });
+      }
+
+      if (self.type === 'local') {
+        if (typeof start !== 'undefined') {
+          self.player.currentTime = start;
+        }
+
+        if (self.player.paused) {
+          self.player.play();
+        }
+      }
+    }
+
+    pause() {
+      const self = this;
+
+      if (!self.player) {
+        return;
+      }
+
+      if (self.type === 'youtube' && self.player.pauseVideo) {
+        if (global$1$1.YT.PlayerState.PLAYING === self.player.getPlayerState()) {
+          self.player.pauseVideo();
+        }
+      }
+
+      if (self.type === 'vimeo') {
+        self.player.getPaused().then(paused => {
+          if (!paused) {
+            self.player.pause();
+          }
+        });
+      }
+
+      if (self.type === 'local') {
+        if (!self.player.paused) {
+          self.player.pause();
+        }
+      }
+    }
+
+    mute() {
+      const self = this;
+
+      if (!self.player) {
+        return;
+      }
+
+      if (self.type === 'youtube' && self.player.mute) {
+        self.player.mute();
+      }
+
+      if (self.type === 'vimeo' && self.player.setVolume) {
+        self.player.setVolume(0);
+      }
+
+      if (self.type === 'local') {
+        self.$video.muted = true;
+      }
+    }
+
+    unmute() {
+      const self = this;
+
+      if (!self.player) {
+        return;
+      }
+
+      if (self.type === 'youtube' && self.player.mute) {
+        self.player.unMute();
+      }
+
+      if (self.type === 'vimeo' && self.player.setVolume) {
+        self.player.setVolume(self.options.volume);
+      }
+
+      if (self.type === 'local') {
+        self.$video.muted = false;
+      }
+    }
+
+    setVolume(volume = false) {
+      const self = this;
+
+      if (!self.player || !volume) {
+        return;
+      }
+
+      if (self.type === 'youtube' && self.player.setVolume) {
+        self.player.setVolume(volume);
+      }
+
+      if (self.type === 'vimeo' && self.player.setVolume) {
+        self.player.setVolume(volume);
+      }
+
+      if (self.type === 'local') {
+        self.$video.volume = volume / 100;
+      }
+    }
+
+    getVolume(callback) {
+      const self = this;
+
+      if (!self.player) {
+        callback(false);
+        return;
+      }
+
+      if (self.type === 'youtube' && self.player.getVolume) {
+        callback(self.player.getVolume());
+      }
+
+      if (self.type === 'vimeo' && self.player.getVolume) {
+        self.player.getVolume().then(volume => {
+          callback(volume);
+        });
+      }
+
+      if (self.type === 'local') {
+        callback(self.$video.volume * 100);
+      }
+    }
+
+    getMuted(callback) {
+      const self = this;
+
+      if (!self.player) {
+        callback(null);
+        return;
+      }
+
+      if (self.type === 'youtube' && self.player.isMuted) {
+        callback(self.player.isMuted());
+      }
+
+      if (self.type === 'vimeo' && self.player.getVolume) {
+        self.player.getVolume().then(volume => {
+          callback(!!volume);
+        });
+      }
+
+      if (self.type === 'local') {
+        callback(self.$video.muted);
+      }
+    }
+
+    getImageURL(callback) {
+      const self = this;
+
+      if (self.videoImage) {
+        callback(self.videoImage);
+        return;
+      }
+
+      if (self.type === 'youtube') {
+        const availableSizes = ['maxresdefault', 'sddefault', 'hqdefault', '0'];
+        let step = 0;
+        const tempImg = new Image();
+
+        tempImg.onload = function () {
+          // if no thumbnail, youtube add their own image with width = 120px
+          if ((this.naturalWidth || this.width) !== 120 || step === availableSizes.length - 1) {
+            // ok
+            self.videoImage = `https://img.youtube.com/vi/${self.videoID}/${availableSizes[step]}.jpg`;
+            callback(self.videoImage);
+          } else {
+            // try another size
+            step += 1;
+            this.src = `https://img.youtube.com/vi/${self.videoID}/${availableSizes[step]}.jpg`;
+          }
+        };
+
+        tempImg.src = `https://img.youtube.com/vi/${self.videoID}/${availableSizes[step]}.jpg`;
+      }
+
+      if (self.type === 'vimeo') {
+        let request = new XMLHttpRequest(); // https://vimeo.com/api/oembed.json?url=https://vimeo.com/235212527
+
+        request.open('GET', `https://vimeo.com/api/oembed.json?url=${self.url}`, true);
+
+        request.onreadystatechange = function () {
+          if (this.readyState === 4) {
+            if (this.status >= 200 && this.status < 400) {
+              // Success!
+              const response = JSON.parse(this.responseText);
+
+              if (response.thumbnail_url) {
+                self.videoImage = response.thumbnail_url;
+                callback(self.videoImage);
+              }
+            }
+          }
+        };
+
+        request.send();
+        request = null;
+      }
+    } // fallback to the old version.
+
+
+    getIframe(callback) {
+      this.getVideo(callback);
+    }
+
+    getVideo(callback) {
+      const self = this; // return generated video block
+
+      if (self.$video) {
+        callback(self.$video);
+        return;
+      } // generate new video block
+
+
+      self.onAPIready(() => {
+        let hiddenDiv;
+
+        if (!self.$video) {
+          hiddenDiv = document.createElement('div');
+          hiddenDiv.style.display = 'none';
+        } // Youtube
+
+
+        if (self.type === 'youtube') {
+          self.playerOptions = {
+            // GDPR Compliance.
+            host: 'https://www.youtube-nocookie.com',
+            videoId: self.videoID,
+            playerVars: {
+              autohide: 1,
+              rel: 0,
+              autoplay: 0,
+              // autoplay enable on mobile devices
+              playsinline: 1
+            }
+          }; // hide controls
+
+          if (!self.options.showControls) {
+            self.playerOptions.playerVars.iv_load_policy = 3;
+            self.playerOptions.playerVars.modestbranding = 1;
+            self.playerOptions.playerVars.controls = 0;
+            self.playerOptions.playerVars.showinfo = 0;
+            self.playerOptions.playerVars.disablekb = 1;
+          } // events
+
+
+          let ytStarted;
+          let ytProgressInterval;
+          self.playerOptions.events = {
+            onReady(e) {
+              // mute
+              if (self.options.mute) {
+                e.target.mute();
+              } else if (self.options.volume) {
+                e.target.setVolume(self.options.volume);
+              } // autoplay
+
+
+              if (self.options.autoplay) {
+                self.play(self.options.startTime);
+              }
+
+              self.fire('ready', e); // For seamless loops, set the endTime to 0.1 seconds less than the video's duration
+              // https://github.com/nk-o/video-worker/issues/2
+
+              if (self.options.loop && !self.options.endTime) {
+                const secondsOffset = 0.1;
+                self.options.endTime = self.player.getDuration() - secondsOffset;
+              } // volumechange
+
+
+              setInterval(() => {
+                self.getVolume(volume => {
+                  if (self.options.volume !== volume) {
+                    self.options.volume = volume;
+                    self.fire('volumechange', e);
+                  }
+                });
+              }, 150);
+            },
+
+            onStateChange(e) {
+              // loop
+              if (self.options.loop && e.data === global$1$1.YT.PlayerState.ENDED) {
+                self.play(self.options.startTime);
+              }
+
+              if (!ytStarted && e.data === global$1$1.YT.PlayerState.PLAYING) {
+                ytStarted = 1;
+                self.fire('started', e);
+              }
+
+              if (e.data === global$1$1.YT.PlayerState.PLAYING) {
+                self.fire('play', e);
+              }
+
+              if (e.data === global$1$1.YT.PlayerState.PAUSED) {
+                self.fire('pause', e);
+              }
+
+              if (e.data === global$1$1.YT.PlayerState.ENDED) {
+                self.fire('ended', e);
+              } // progress check
+
+
+              if (e.data === global$1$1.YT.PlayerState.PLAYING) {
+                ytProgressInterval = setInterval(() => {
+                  self.fire('timeupdate', e); // check for end of video and play again or stop
+
+                  if (self.options.endTime && self.player.getCurrentTime() >= self.options.endTime) {
+                    if (self.options.loop) {
+                      self.play(self.options.startTime);
+                    } else {
+                      self.pause();
+                    }
+                  }
+                }, 150);
+              } else {
+                clearInterval(ytProgressInterval);
+              }
+            },
+
+            onError(e) {
+              self.fire('error', e);
+            }
+
+          };
+          const firstInit = !self.$video;
+
+          if (firstInit) {
+            const div = document.createElement('div');
+            div.setAttribute('id', self.playerID);
+            hiddenDiv.appendChild(div);
+            document.body.appendChild(hiddenDiv);
+          }
+
+          self.player = self.player || new global$1$1.YT.Player(self.playerID, self.playerOptions);
+
+          if (firstInit) {
+            self.$video = document.getElementById(self.playerID); // add accessibility attributes
+
+            if (self.options.accessibilityHidden) {
+              self.$video.setAttribute('tabindex', '-1');
+              self.$video.setAttribute('aria-hidden', 'true');
+            } // get video width and height
+
+
+            self.videoWidth = parseInt(self.$video.getAttribute('width'), 10) || 1280;
+            self.videoHeight = parseInt(self.$video.getAttribute('height'), 10) || 720;
+          }
+        } // Vimeo
+
+
+        if (self.type === 'vimeo') {
+          self.playerOptions = {
+            // GDPR Compliance.
+            dnt: 1,
+            id: self.videoID,
+            autopause: 0,
+            transparent: 0,
+            autoplay: self.options.autoplay ? 1 : 0,
+            loop: self.options.loop ? 1 : 0,
+            muted: self.options.mute ? 1 : 0
+          };
+
+          if (self.options.volume) {
+            self.playerOptions.volume = self.options.volume;
+          } // hide controls
+
+
+          if (!self.options.showControls) {
+            self.playerOptions.badge = 0;
+            self.playerOptions.byline = 0;
+            self.playerOptions.portrait = 0;
+            self.playerOptions.title = 0;
+            self.playerOptions.background = 1;
+          }
+
+          if (!self.$video) {
+            let playerOptionsString = '';
+            Object.keys(self.playerOptions).forEach(key => {
+              if (playerOptionsString !== '') {
+                playerOptionsString += '&';
+              }
+
+              playerOptionsString += `${key}=${encodeURIComponent(self.playerOptions[key])}`;
+            }); // we need to create iframe manually because when we create it using API
+            // js events won't triggers after iframe moved to another place
+
+            self.$video = document.createElement('iframe');
+            self.$video.setAttribute('id', self.playerID);
+            self.$video.setAttribute('src', `https://player.vimeo.com/video/${self.videoID}?${playerOptionsString}`);
+            self.$video.setAttribute('frameborder', '0');
+            self.$video.setAttribute('mozallowfullscreen', '');
+            self.$video.setAttribute('allowfullscreen', '');
+            self.$video.setAttribute('title', 'Vimeo video player'); // add accessibility attributes
+
+            if (self.options.accessibilityHidden) {
+              self.$video.setAttribute('tabindex', '-1');
+              self.$video.setAttribute('aria-hidden', 'true');
+            }
+
+            hiddenDiv.appendChild(self.$video);
+            document.body.appendChild(hiddenDiv);
+          }
+
+          self.player = self.player || new global$1$1.Vimeo.Player(self.$video, self.playerOptions); // set current time for autoplay
+
+          if (self.options.startTime && self.options.autoplay) {
+            self.player.setCurrentTime(self.options.startTime);
+          } // get video width and height
+
+
+          self.player.getVideoWidth().then(width => {
+            self.videoWidth = width || 1280;
+          });
+          self.player.getVideoHeight().then(height => {
+            self.videoHeight = height || 720;
+          }); // events
+
+          let vmStarted;
+          self.player.on('timeupdate', e => {
+            if (!vmStarted) {
+              self.fire('started', e);
+              vmStarted = 1;
+            }
+
+            self.fire('timeupdate', e); // check for end of video and play again or stop
+
+            if (self.options.endTime) {
+              if (self.options.endTime && e.seconds >= self.options.endTime) {
+                if (self.options.loop) {
+                  self.play(self.options.startTime);
+                } else {
+                  self.pause();
+                }
+              }
+            }
+          });
+          self.player.on('play', e => {
+            self.fire('play', e); // check for the start time and start with it
+
+            if (self.options.startTime && e.seconds === 0) {
+              self.play(self.options.startTime);
+            }
+          });
+          self.player.on('pause', e => {
+            self.fire('pause', e);
+          });
+          self.player.on('ended', e => {
+            self.fire('ended', e);
+          });
+          self.player.on('loaded', e => {
+            self.fire('ready', e);
+          });
+          self.player.on('volumechange', e => {
+            self.fire('volumechange', e);
+          });
+          self.player.on('error', e => {
+            self.fire('error', e);
+          });
+        } // Local
+
+
+        function addSourceToLocal(element, src, type) {
+          const source = document.createElement('source');
+          source.src = src;
+          source.type = type;
+          element.appendChild(source);
+        }
+
+        if (self.type === 'local') {
+          if (!self.$video) {
+            self.$video = document.createElement('video'); // show controls
+
+            if (self.options.showControls) {
+              self.$video.controls = true;
+            } // mute
+
+
+            if (self.options.mute) {
+              self.$video.muted = true;
+            } else if (self.$video.volume) {
+              self.$video.volume = self.options.volume / 100;
+            } // loop
+
+
+            if (self.options.loop) {
+              self.$video.loop = true;
+            } // autoplay enable on mobile devices
+
+
+            self.$video.setAttribute('playsinline', '');
+            self.$video.setAttribute('webkit-playsinline', ''); // add accessibility attributes
+
+            if (self.options.accessibilityHidden) {
+              self.$video.setAttribute('tabindex', '-1');
+              self.$video.setAttribute('aria-hidden', 'true');
+            }
+
+            self.$video.setAttribute('id', self.playerID);
+            hiddenDiv.appendChild(self.$video);
+            document.body.appendChild(hiddenDiv);
+            Object.keys(self.videoID).forEach(key => {
+              addSourceToLocal(self.$video, self.videoID[key], `video/${key}`);
+            });
+          }
+
+          self.player = self.player || self.$video;
+          let locStarted;
+          self.player.addEventListener('playing', e => {
+            if (!locStarted) {
+              self.fire('started', e);
+            }
+
+            locStarted = 1;
+          });
+          self.player.addEventListener('timeupdate', function (e) {
+            self.fire('timeupdate', e); // check for end of video and play again or stop
+
+            if (self.options.endTime) {
+              if (self.options.endTime && this.currentTime >= self.options.endTime) {
+                if (self.options.loop) {
+                  self.play(self.options.startTime);
+                } else {
+                  self.pause();
+                }
+              }
+            }
+          });
+          self.player.addEventListener('play', e => {
+            self.fire('play', e);
+          });
+          self.player.addEventListener('pause', e => {
+            self.fire('pause', e);
+          });
+          self.player.addEventListener('ended', e => {
+            self.fire('ended', e);
+          });
+          self.player.addEventListener('loadedmetadata', function () {
+            // get video width and height
+            self.videoWidth = this.videoWidth || 1280;
+            self.videoHeight = this.videoHeight || 720;
+            self.fire('ready'); // autoplay
+
+            if (self.options.autoplay) {
+              self.play(self.options.startTime);
+            }
+          });
+          self.player.addEventListener('volumechange', e => {
+            self.getVolume(volume => {
+              self.options.volume = volume;
+            });
+            self.fire('volumechange', e);
+          });
+          self.player.addEventListener('error', e => {
+            self.fire('error', e);
+          });
+        }
+
+        callback(self.$video);
+      });
+    }
+
+    init() {
+      const self = this;
+      self.playerID = `VideoWorker-${self.ID}`;
+    }
+
+    loadAPI() {
+      const self = this;
+
+      if (YoutubeAPIadded && VimeoAPIadded) {
+        return;
+      }
+
+      let src = ''; // load Youtube API
+
+      if (self.type === 'youtube' && !YoutubeAPIadded) {
+        YoutubeAPIadded = 1;
+        src = 'https://www.youtube.com/iframe_api';
+      } // load Vimeo API
+
+
+      if (self.type === 'vimeo' && !VimeoAPIadded) {
+        VimeoAPIadded = 1; // Useful when Vimeo API added using RequireJS https://github.com/nk-o/video-worker/pull/7
+
+        if (typeof global$1$1.Vimeo !== 'undefined') {
+          return;
+        }
+
+        src = 'https://player.vimeo.com/api/player.js';
+      }
+
+      if (!src) {
+        return;
+      } // add script in head section
+
+
+      let tag = document.createElement('script');
+      let head = document.getElementsByTagName('head')[0];
+      tag.src = src;
+      head.appendChild(tag);
+      head = null;
+      tag = null;
+    }
+
+    onAPIready(callback) {
+      const self = this; // Youtube
+
+      if (self.type === 'youtube') {
+        // Listen for global YT player callback
+        if ((typeof global$1$1.YT === 'undefined' || global$1$1.YT.loaded === 0) && !loadingYoutubePlayer) {
+          // Prevents Ready event from being called twice
+          loadingYoutubePlayer = 1; // Creates deferred so, other players know when to wait.
+
+          global$1$1.onYouTubeIframeAPIReady = function () {
+            global$1$1.onYouTubeIframeAPIReady = null;
+            loadingYoutubeDefer.resolve('done');
+            callback();
+          };
+        } else if (typeof global$1$1.YT === 'object' && global$1$1.YT.loaded === 1) {
+          callback();
+        } else {
+          loadingYoutubeDefer.done(() => {
+            callback();
+          });
+        }
+      } // Vimeo
+
+
+      if (self.type === 'vimeo') {
+        if (typeof global$1$1.Vimeo === 'undefined' && !loadingVimeoPlayer) {
+          loadingVimeoPlayer = 1;
+          const vimeoInterval = setInterval(() => {
+            if (typeof global$1$1.Vimeo !== 'undefined') {
+              clearInterval(vimeoInterval);
+              loadingVimeoDefer.resolve('done');
+              callback();
+            }
+          }, 20);
+        } else if (typeof global$1$1.Vimeo !== 'undefined') {
+          callback();
+        } else {
+          loadingVimeoDefer.done(() => {
+            callback();
+          });
+        }
+      } // Local
+
+
+      if (self.type === 'local') {
+        callback();
+      }
+    }
+
+  }
+
+  function ready(callback) {
+    if ('complete' === document.readyState || 'interactive' === document.readyState) {
+      // Already ready or interactive, execute callback
+      callback();
+    } else {
+      document.addEventListener('DOMContentLoaded', callback, {
+        capture: true,
+        once: true,
+        passive: true
+      });
+    }
+  }
+
+  /* eslint-disable import/no-mutable-exports */
+
+  /* eslint-disable no-restricted-globals */
+  let win;
+
+  if ('undefined' !== typeof window) {
+    win = window;
+  } else if ('undefined' !== typeof global) {
+    win = global;
+  } else if ('undefined' !== typeof self) {
+    win = self;
+  } else {
+    win = {};
+  }
+
+  var global$1 = win;
+
+  function jarallaxVideo(jarallax = global$1.jarallax) {
+    if ('undefined' === typeof jarallax) {
+      return;
+    }
+
+    const Jarallax = jarallax.constructor; // append video after when block will be visible.
+
+    const defOnScroll = Jarallax.prototype.onScroll;
+
+    Jarallax.prototype.onScroll = function () {
+      const self = this;
+      defOnScroll.apply(self);
+      const isReady = !self.isVideoInserted && self.video && (!self.options.videoLazyLoading || self.isElementInViewport) && !self.options.disableVideo();
+
+      if (isReady) {
+        self.isVideoInserted = true;
+        self.video.getVideo(video => {
+          const $parent = video.parentNode;
+          self.css(video, {
+            position: self.image.position,
+            top: '0px',
+            left: '0px',
+            right: '0px',
+            bottom: '0px',
+            width: '100%',
+            height: '100%',
+            maxWidth: 'none',
+            maxHeight: 'none',
+            pointerEvents: 'none',
+            transformStyle: 'preserve-3d',
+            backfaceVisibility: 'hidden',
+            willChange: 'transform,opacity',
+            margin: 0,
+            zIndex: -1
+          });
+          self.$video = video; // add Poster attribute to self-hosted video
+
+          if ('local' === self.video.type) {
+            if (self.image.src) {
+              self.$video.setAttribute('poster', self.image.src);
+            } else if (self.image.$item && 'IMG' === self.image.$item.tagName && self.image.$item.src) {
+              self.$video.setAttribute('poster', self.image.$item.src);
+            }
+          } // insert video tag
+
+
+          self.image.$container.appendChild(video); // remove parent video element (created by VideoWorker)
+
+          $parent.parentNode.removeChild($parent); // call onVideoInsert event
+
+          if (self.options.onVideoInsert) {
+            self.options.onVideoInsert.call(self);
+          }
+        });
+      }
+    }; // cover video
+
+
+    const defCoverImage = Jarallax.prototype.coverImage;
+
+    Jarallax.prototype.coverImage = function () {
+      const self = this;
+      const imageData = defCoverImage.apply(self);
+      const node = self.image.$item ? self.image.$item.nodeName : false;
+
+      if (imageData && self.video && node && ('IFRAME' === node || 'VIDEO' === node)) {
+        let h = imageData.image.height;
+        let w = h * self.image.width / self.image.height;
+        let ml = (imageData.container.width - w) / 2;
+        let mt = imageData.image.marginTop;
+
+        if (imageData.container.width > w) {
+          w = imageData.container.width;
+          h = w * self.image.height / self.image.width;
+          ml = 0;
+          mt += (imageData.image.height - h) / 2;
+        } // add video height over than need to hide controls
+
+
+        if ('IFRAME' === node) {
+          h += 400;
+          mt -= 200;
+        }
+
+        self.css(self.$video, {
+          width: `${w}px`,
+          marginLeft: `${ml}px`,
+          height: `${h}px`,
+          marginTop: `${mt}px`
+        });
+      }
+
+      return imageData;
+    }; // init video
+
+
+    const defInitImg = Jarallax.prototype.initImg;
+
+    Jarallax.prototype.initImg = function () {
+      const self = this;
+      const defaultResult = defInitImg.apply(self);
+
+      if (!self.options.videoSrc) {
+        self.options.videoSrc = self.$item.getAttribute('data-jarallax-video') || null;
+      }
+
+      if (self.options.videoSrc) {
+        self.defaultInitImgResult = defaultResult;
+        return true;
+      }
+
+      return defaultResult;
+    };
+
+    const defCanInitParallax = Jarallax.prototype.canInitParallax;
+
+    Jarallax.prototype.canInitParallax = function () {
+      const self = this;
+      let defaultResult = defCanInitParallax.apply(self);
+
+      if (!self.options.videoSrc) {
+        return defaultResult;
+      } // Init video api
+
+
+      const video = new VideoWorker(self.options.videoSrc, {
+        autoplay: true,
+        loop: self.options.videoLoop,
+        showControls: false,
+        accessibilityHidden: true,
+        startTime: self.options.videoStartTime || 0,
+        endTime: self.options.videoEndTime || 0,
+        mute: self.options.videoVolume ? 0 : 1,
+        volume: self.options.videoVolume || 0
+      }); // call onVideoWorkerInit event
+
+      if (self.options.onVideoWorkerInit) {
+        self.options.onVideoWorkerInit.call(self, video);
+      }
+
+      function resetDefaultImage() {
+        if (self.image.$default_item) {
+          self.image.$item = self.image.$default_item;
+          self.image.$item.style.display = 'block'; // set image width and height
+
+          self.coverImage();
+          self.onScroll();
+        }
+      }
+
+      if (video.isValid()) {
+        // Force enable parallax.
+        // When the parallax disabled on mobile devices, we still need to display videos.
+        // https://github.com/nk-o/jarallax/issues/159
+        if (this.options.disableParallax()) {
+          defaultResult = true;
+          self.image.position = 'absolute';
+          self.options.type = 'scroll';
+          self.options.speed = 1;
+        } // if parallax will not be inited, we can add thumbnail on background.
+
+
+        if (!defaultResult) {
+          if (!self.defaultInitImgResult) {
+            video.getImageURL(url => {
+              // save default user styles
+              const curStyle = self.$item.getAttribute('style');
+
+              if (curStyle) {
+                self.$item.setAttribute('data-jarallax-original-styles', curStyle);
+              } // set new background
+
+
+              self.css(self.$item, {
+                'background-image': `url("${url}")`,
+                'background-position': 'center',
+                'background-size': 'cover'
+              });
+            });
+          } // init video
+
+        } else {
+          video.on('ready', () => {
+            if (self.options.videoPlayOnlyVisible) {
+              const oldOnScroll = self.onScroll;
+
+              self.onScroll = function () {
+                oldOnScroll.apply(self);
+
+                if (!self.videoError && (self.options.videoLoop || !self.options.videoLoop && !self.videoEnded)) {
+                  if (self.isVisible()) {
+                    video.play();
+                  } else {
+                    video.pause();
+                  }
+                }
+              };
+            } else {
+              video.play();
+            }
+          });
+          video.on('started', () => {
+            self.image.$default_item = self.image.$item;
+            self.image.$item = self.$video; // set video width and height
+
+            self.image.width = self.video.videoWidth || 1280;
+            self.image.height = self.video.videoHeight || 720;
+            self.coverImage();
+            self.onScroll(); // hide image
+
+            if (self.image.$default_item) {
+              self.image.$default_item.style.display = 'none';
+            }
+          });
+          video.on('ended', () => {
+            self.videoEnded = true;
+
+            if (!self.options.videoLoop) {
+              // show default image if Loop disabled.
+              resetDefaultImage();
+            }
+          });
+          video.on('error', () => {
+            self.videoError = true; // show default image if video loading error.
+
+            resetDefaultImage();
+          });
+          self.video = video; // set image if not exists
+
+          if (!self.defaultInitImgResult) {
+            // set empty image on self-hosted video if not defined
+            self.image.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+
+            if ('local' !== video.type) {
+              video.getImageURL(url => {
+                self.image.bgImage = `url("${url}")`;
+                self.init();
+              });
+              return false;
+            }
+          }
+        }
+      }
+
+      return defaultResult;
+    }; // Destroy video parallax
+
+
+    const defDestroy = Jarallax.prototype.destroy;
+
+    Jarallax.prototype.destroy = function () {
+      const self = this;
+
+      if (self.image.$default_item) {
+        self.image.$item = self.image.$default_item;
+        delete self.image.$default_item;
+      }
+
+      defDestroy.apply(self);
+    };
+  }
+
+  jarallaxVideo(); // data-jarallax-video initialization
+
+  ready(() => {
+    if ('undefined' !== typeof global$1.jarallax) {
+      global$1.jarallax(document.querySelectorAll('[data-jarallax-video]'));
+    }
+  }); // We should add VideoWorker globally, since some project uses it.
+
+  if (!global$1.VideoWorker) {
+    global$1.VideoWorker = VideoWorker;
+  }
+
+  return jarallaxVideo;
+
+}));
+//# sourceMappingURL=jarallax-video.js.map

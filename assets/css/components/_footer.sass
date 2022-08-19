@@ -1,0 +1,94 @@
+.footer
+    background-color: $black
+
+    &__link
+        width: calc(100% - 230px)
+        padding: 30px 20px 0
+
+        .link__list
+            width: 100%
+            max-width: 960px
+            margin: 0 auto
+
+        .link__item
+            margin-bottom: 60px
+            width: 25%
+
+            a
+                display: block
+                transition: opacity .8s
+                opacity: 1
+                &:hover
+                    opacity: .4
+
+                .tw
+                    display: block
+                    color: #fff
+                    font-size: 16px
+                    font-size: 1.6rem
+                    font-weight: 300
+                    letter-spacing: .1em
+                    line-height: 1
+                    margin-bottom: 10px
+
+                .en
+                    color: #fff
+                    display: block
+                    font-size: 11px
+                    font-size: 1.1rem
+                    font-weight: 700
+                    letter-spacing: .04em
+                    line-height: 1
+                    opacity: .5
+
+    &__logo
+        width: 230px
+        background-color: $main-light
+        +flex(center, center)
+
+        .logo__wrap
+            display: block
+            text-align: center
+
+            .img
+                display: block
+                +size(120px, 80px)
+                background-image: url("../images/logo-white.svg")
+                background-repeat: no-repeat
+                background-position: center center
+                background-size: contain
+                //margin: 0 auto 10px
+
+    &__top
+        padding-top: 60px
+
+        ul
+            &:last-child
+                padding-top: 60px
+                border-top: 1px solid #2e2e2e
+
+    &__bottom
+        color: white
+        width: 100%
+        max-width: 960px
+        margin: 0 auto
+        position: relative
+        padding: 0px 0 40px
+
+    .social__link
+
+    .social__item
+        margin-right: 24px
+
+        &:last-child
+            margin-right: 0
+
+        span
+            &:before
+                font-size: 24px
+                font-size: 2.4rem
+
+    p
+        position: absolute
+        right: 0
+        bottom: 40px

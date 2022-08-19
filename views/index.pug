@@ -1,8 +1,47 @@
-include common/_head
+doctype html
+html(lang="zh-Hant")
 
-body
-    h2 Hello Official-Website
-    include ./components/organisms/_sectionJarallax
+    // Include Common Head
+    include common/_head
 
+    // Main
+    body
+        include ./common/_header
 
-include common/_footer
+        main
+            #content.content.pt-100
+                // Banner
+                include ./section/_sectionBanner
+
+                // Introduction
+                include ./section/_sectionIntroduction
+
+                // Advantage
+                include ./section/_sectionAdvantage
+
+                // Background
+                include ./section/_sectionBackground
+
+                // Service
+                include ./section/_sectionService
+
+                // Warn
+                include ./section/_sectionWarn
+
+                // Team
+                include ./section/_sectionTeam
+
+                // Lawyer
+                include ./section/_sectionLawyer
+
+                // Legalization
+                include ./section/_sectionLegalization
+
+                // Faq
+                include section/_sectionFaq
+
+        #cover__menu.cover__menu
+
+    include common/_footer
+
+    include common/_script

@@ -68,6 +68,18 @@ const handleImages = () => {
         );
 }
 
+// Compile images to public
+const handleFiles = () => {
+    return gulp
+        .src('./assets/**/*')
+        .pipe(gulp.dest('./public/assets'))
+        .pipe(
+            browserSync.reload({
+                stream: true,
+            }),
+        );
+}
+
 // First clean current public path
 const handleClean = () => {
     return gulp.src('./public', {
@@ -91,6 +103,7 @@ const handleWatch = () => {
     gulp.watch('./assets/css/**/*.sass', handleSassCompile);
     gulp.watch('./assets/js/*.js', handleJsUglify);
     gulp.watch('./assets/images/**/*', handleImages);
+    gulp.watch('./assets/**/*', handleFiles);
 }
 
-exports.default = gulp.series(handleClean, handlePugCompile, handleSassCompile, handleJsUglify, handleImages, handleWatch);
+exports.default = gulp.series(handleClean, handlePugCompile, handleSassCompile, handleJsUglify, handleImages, handleFiles, handleWatch);

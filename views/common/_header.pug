@@ -1,0 +1,78 @@
+header#header
+    .header__inner
+        h1.logo
+            a.img(href='index.html')
+                span.hide-text 熊蓋厚貸
+
+            p
+                span.txt
+                    span.tw.slide-in-bottom
+                        | 熊蓋厚貸
+                    span.en.slide-in-top
+                        | OFFICIAL SITE
+        .nav_wrap
+            nav.pc_menu
+                ul.pc_menu__inner
+
+                    mixin item(href, tw, en)
+                        li.pc_menu__item
+                            a(href=href)
+                                span.txt
+                                    span.tw.slide-in-bottom
+                                        | #{ tw }
+                                    span.en.slide-in-top(data-delay="1")
+                                        | #{ en }
+
+                    +item('javascript:void(0)', '專屬機車貸款', 'Motorcycle Loans')
+                    +item('javascript:void(0)', '專屬汽車貸款', 'Car Loans')
+                    +item('javascript:void(0)', '專屬二胎貸款', 'Second Rank Mortgage')
+                    +item('javascript:void(0)', '文章專欄', 'Articles Column')
+
+            #menu__wrap.menu__wrap
+                .menu__trigger
+                    .bar
+                        span
+                        span
+
+    #modal.modal
+        #modal__inner.modal__inner
+            .modal__top
+                ul.modal__link
+
+                    mixin item(href, tw, en)
+                        - href = href || 'javascript:void(0);'
+                        li.modal__item
+                            a(href=href)
+                                span.txt
+                                    span.tw
+                                        | #{ tw }
+                                    span.en
+                                        | #{ en }
+
+                    +item('javascript:void(0);', '熊蓋團隊', 'Our Team')
+                    +item('javascript:void(0);', '熊蓋優勢', 'Our Advantages')
+                    +item('javascript:void(0);', '熊蓋服務', 'Our Service')
+                    +item('javascript:void(0);', '熊蓋服務', 'Our Service')
+                    +item('javascript:void(0);', '熊蓋服務', 'Our Service')
+                    +item('javascript:void(0);', '熊蓋服務', 'Our Service')
+                    +item('javascript:void(0);', '熊蓋服務', 'Our Service')
+                    +item('javascript:void(0);', '熊蓋服務', 'Our Service')
+
+
+
+            .modal__bottom
+                .logo__wrap
+                    .img
+                        span.hide-text 熊蓋厚貸
+
+                    p.txt
+                        span.txt__inner
+                            | 熊蓋厚貸
+                            br
+                            | OFFICIAL SITE
+
+                .desc__wrap
+                    a(href='privacy.html') Privacy Policy
+                    p.footer__copy
+                        small
+                            | &copy; 海鑫資訊科技

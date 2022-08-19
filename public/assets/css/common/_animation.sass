@@ -1,0 +1,109 @@
+@keyframes fade-in
+    0%
+        opacity: 0
+
+    100%
+        opacity: 1
+
+
+@keyframes slide-in-bottom
+    0%
+        opacity: 0
+        transform: translate3d(0, 15px, 0)
+
+    100%
+        opacity: 1
+        transform: translate3d(0, 0, 0)
+
+
+@keyframes slide-in-top
+    0%
+        opacity: 0
+        transform: translate3d(0, -15px, 0)
+
+    100%
+        opacity: 1
+        transform: translate3d(0, 0, 0)
+
+@keyframes scale-in-right
+    0%
+        transform: scaleX(0)
+
+    100%
+        transform: scaleX(1)
+
+
+@keyframes modal-fade-in
+    0%
+        opacity: 0
+        top: 15px
+
+    100%
+        opacity: 1
+        top: 0
+
+@keyframes modal-fade-out
+    0%
+        opacity: 1
+        top: 0
+
+    100%
+        opacity: 0
+        top: 15px
+
+@keyframes cover-menu-in
+    0%
+        height: 0
+
+    100%
+        height: calc(100% + 320px)
+
+@keyframes cover-menu-out
+    0%
+        visibility: visible
+        height: calc(100% + 320px)
+
+    100%
+        visibility: hidden
+
+@keyframes overLay-mask
+    0%
+        top: 100%
+        opacity: 0
+
+    1%
+        top: 100%
+        opacity: 1
+
+    50%
+        top: 0
+        opacity: 1
+
+    99%
+        top: -100%
+        opacity: 1
+
+    100%
+        top: 101%
+        opacity: 0
+
+@keyframes overLay-mask-right
+    0%
+        left: 0
+        opacity: 0
+
+    1%
+        left: 100%
+        opacity: 1
+
+    50%
+        left: 0
+        opacity: 1
+
+    99%
+        left: -100%
+        opacity: 1
+
+    100%
+        left: 101%
+        opacity: 0

@@ -1,14 +1,119 @@
-hr.footer_hr
+footer#footer.footer
+    hr.footer_hr
 
-// footer section
-section.container-fluid.footer_section
-    p
-        | &copy;
-        | 2022 All Rights Reserved. Design by
-        a(href='index.html')  Hubert Hsieh
+    .footer__inner.d-flex
+        .footer__logo
+            .logo__wrap
+                a.img(href="index.html")
+                span.en.color-white OFFICIAL SITE
 
-footer
-    script(type='text/javascript' src='./assets/js/jquery-3.6.0.min.js')
-    script(type='text/javascript' src='./assets/js/jarallax.js')
-    script(type='text/javascript' src='./assets/js/jarallax-video.js')
-    script(type='text/javascript' src='./assets/js/main.js')
+        .footer__link
+            .footer__top
+                mixin item(tw, en, href, animation, delay, frequency)
+                    - href = href || "javascript:void(0);"
+                    - animation = animation || "modal-fade-in"
+                    - delay = delay || "0"
+                    - frequency = frequency || "once"
+
+                    li.link__item.color-white.opacity-0.scroll__animation(
+                        data-os-animation="modal-fade-in"
+                        data-os-animation-delay=delay
+                        data-os-animation-Frequency="once"
+                    )
+                        a(href=href).d-block
+                            span.tw.d-block
+                                | #{ tw }
+                            span.en.d-block
+                                | #{ en }
+
+                ul.d-flex.link__list
+                    +item(
+                        "專屬機車貸款",
+                        "Motorcycle Loans",
+                        "moto.html",
+                        "modal-fade-in",
+                        "0",
+                        "once"
+                    )
+
+                    +item(
+                        "專屬汽車貸款",
+                        "Car Loans",
+                        "car.html",
+                        "modal-fade-in",
+                        "0.4s",
+                        "once"
+                    )
+
+                    +item(
+                        "專屬二胎貸款",
+                        "Second Rank Mortgage",
+                        "house.html",
+                        "modal-fade-in",
+                        "0.8s",
+                        "once"
+                    )
+
+                    +item(
+                        "招募訊息",
+                        "Recruit Information",
+                        "recruit.html",
+                        "modal-fade-in",
+                        "1.2s",
+                        "once"
+                    )
+
+                ul.d-flex.link__list
+                    +item(
+                        "文章專欄",
+                        "Article Column",
+                        "article.html",
+                        "modal-fade-in",
+                        "1.6s",
+                        "once"
+                    )
+
+                    +item(
+                        "常見問題",
+                        "Frequently Asked Question",
+                        "faq.html",
+                        "modal-fade-in",
+                        "2s",
+                        "once"
+                    )
+
+                    +item(
+                        "聯絡我們",
+                        "Contact Us",
+                        "contact.html",
+                        "modal-fade-in",
+                        "2.4s",
+                        "once"
+                    )
+
+                    +item(
+                        "熊蓋源起",
+                        "Originate From",
+                        "originate.html",
+                        "modal-fade-in",
+                        "2.8s",
+                        "once"
+                    )
+
+            .footer__bottom.d-flex.justify-between
+                .social__link.d-flex
+                    a.social__item(href="https://lin.ee/BO3qqnb")
+                        span.fa-brands.fa-line
+
+                    a.social__item(href="javascript:void(0);")
+                        span.fa-brands.fa-instagram-square
+
+                    a.social__item(href="javascript:void(0);")
+                        span.fa-brands.fa-facebook-square
+
+                p
+                    | &copy;
+                    | 2022 All Rights Reserved. Design by
+                    a(href='index.html') Hubert Hsieh
+
+
