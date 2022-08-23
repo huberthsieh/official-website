@@ -8,8 +8,10 @@
     z-index: 1000
     transition: all .3s
 
-    &.open
+    +pad
+        height: 60px
 
+    &.open
         .menu__trigger
 
             &:before
@@ -32,6 +34,9 @@
         color: white
         position: relative
         z-index: 10
+        transition: background-color .3s
+        +pad
+            background-color: $main-light
 
         .txt
             .tw, .en
@@ -45,6 +50,8 @@
         p
             +flex(center, center)
             +size(210px, 100%)
+            +pad
+                width: 140px
 
     .txt
         display: inline-block
@@ -66,8 +73,14 @@
         +flex()
         +size(calc(100% - 310px), 100%)
 
+        +pad
+            width: auto
+
+
     .pc_menu
         +size(calc(100% - 160px), 100%)
+        +pad
+            display: none
 
         &__inner
             +flex()
@@ -101,27 +114,13 @@
                     top: 50%
                     transform: translateY(-50%)
 
-            //.txt
-            //    opacity: 1
-            //
-            //.tw, .en
-            //    display: block
-            //    opacity: 0
-            //    position: relative
-            //
-            //.tw
-            //    font-size: 1.6rem
-            //    font-weight: 500
-            //
-            //.en
-            //    font-size: 1.2rem
-            //    font-weight: 700
-
-
     .menu__wrap
         +size(160px, 100%)
         +flex(center, center)
         background-color: $main-heavy
+        +pad
+            width: 105px
+
 
     .menu__trigger
         display: block
@@ -187,23 +186,18 @@
     position: fixed
     top: 0
     left: 0
-    //background-color: $main-modal
     padding-top: 100px
     transform-origin: top
-    //transform: scaleY(0)
     opacity: 0
     z-index: 11
     pointer-events: none
     transition: opacity .4s
+    +mobile
+        padding-top: 80px
 
     &.open
-        //transform: scaleY(1)
         opacity: 1
         display: block
-        //
-        //.modal__inner
-        //    animation: modal-fade-in .5s ease-in-out .6s 1 normal both running
-        //    pointer-events: auto
 
     &__inner
         width: 100%
@@ -234,6 +228,9 @@
         -webkit-box-align: center
         -ms-flex-align: center
         align-items: center
+        +mobile
+            height: auto
+            padding-bottom: 20px
         
     &__link
         width: 100%
@@ -247,6 +244,9 @@
         padding: 30px 0
         opacity: 1
         transition: opacity .8s
+        +mobile
+            width: 50%
+            padding: 15px 0
 
         a
             display: block
@@ -279,30 +279,34 @@
                 
     &__bottom
         border-top: 1px solid rgba(255,255,255,.5)
-        width: 100%
-        height: 160px
+        +size(100%, 160px)
         display: flex
         justify-content: space-between
         align-items: center
         opacity: 1
         transition: opacity .8s
+        +mobile
+            display: block
+            height: auto
         
         .logo__wrap
             width: 200px
             display: flex
             justify-content: space-between
             align-items: center
+            +mobile
+                display: block
+                width: 100%
 
             .img
                 display: block
-                +size(84px, 100px)
+                +size(120px, 70px)
                 background-position: center center
                 background-repeat: no-repeat
                 background-size: contain
                 background-image: url("../images/logo-white.svg")
-
-                .hide-text
-                    display: none
+                +mobile
+                    margin: 20px auto
 
             .txt
                 &__inner
@@ -311,6 +315,8 @@
         .desc__wrap
             display: flex
             color: white
+            +mobile
+                justify-content: space-between
 
         .footer__copy
             margin-left: 10px

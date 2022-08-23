@@ -68,25 +68,27 @@
             animation-timing-function: cubic-bezier(0.1, 0.5, 0.2, 1)
             animation-duration: 1s
             animation-fill-mode: forwards
+
 .sales
     &__list
         max-width: 1280px
         margin: 0 auto
-        //position: relative
-        //z-index: 2
+        flex-wrap: wrap
 
     &__item
         position: relative
         overflow: hidden
         width: 25%
+        +pad
+            width: 50%
 
         &:before
             content: ""
             +size(100%, 100%)
             position: absolute
-            transform-origin: right
             left: 0
             top: 0
+            transform-origin: right
             z-index: 1
             background-color: $main
             opacity: 0
@@ -100,10 +102,6 @@
                 animation-duration: 1s
                 animation-fill-mode: forwards
 
-.img_group
-    position: relative
-    width: 50%
-    margin-left: -100px
 
 .img_background
     background-color: $main-light
@@ -141,7 +139,10 @@
         width: 67.307692307%
         overflow: hidden
 
-        &.img-bottom
+        &--top
+            margin-top: -20px
+
+        &--bottom
             position: absolute
             right: 0
             top: 40%
@@ -149,8 +150,6 @@
 
             &:before
                 animation-delay: .2s
-
-
 
 .img__inner
     display: block

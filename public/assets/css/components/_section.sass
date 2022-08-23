@@ -4,18 +4,192 @@
 
     &.banner
         position: relative
+        padding-top: 100px
+        transition: padding-top .3s
+        +pad
+            padding-top: 60px
+
+    &.introduction
+        &--about
+            +pad
+                margin-top: -60px
+
+        &--warn
+            +pad
+                margin-top: 100px
+
+            .img_dec
+                +pad
+                    top: 0
+
+        .section__inner
+            +pad
+                max-width: 640px
+                padding: 120px 0
+
+            &:before
+                +pad
+                    right: 20px
+
+            .txt
+                +pad
+                    width: 100%
+                    padding: 0 20px
+                    max-width: 85%
+
+        .img_dec
+            +pad
+                right: 0
+                left: auto
+                max-width: 100%
+                bottom: 0
+                position: relative
+                margin-top: -20px
+                margin-left: 20px
+
+    &.advantage
+        padding-top: 100px
+        +pad
+            padding-top: 0
+
+        .section__inner
+            +pad
+                display: block
+
+        .txt
+            +pad
+                width: 100%
+                max-width: 640px
+                margin: 0 auto
+                padding: 0 20px
+
+            .button_wrap
+                +pad
+                    justify-content: flex-start
 
     &.background
         height: 600px
+        +pad
+            margin-top: 0
 
         .jarallax
             height: 100%
 
+    &.service
+        +pad
+            margin-top: 100px
+
+        .section__inner
+            +pad
+                flex-direction: column
+
+        .img_group
+            +pad
+                width: 100%
+                max-width: 640px
+                margin: 0 auto
+                order: 2
+
+            .img__service
+                &--bottom
+                    +pad
+                        margin-right: -20px
+
+        .txt
+            +pad
+                width: 100%
+                max-width: 640px
+                margin: 0 auto 100px auto
+                order: 1
+                padding: 0 20px
+
+    &.team
+        +pad
+            margin-bottom: 0
+
+        .section__inner
+            +pad
+                margin-top: 0
+                padding-bottom: 0
+                display: block
+
+            &:after
+                +pad
+                    opacity: 0
+
+        .txt
+            &:first-child
+                +pad
+                    margin-bottom: 35px
+
+            +pad
+                width: 100%
+                max-width: 640px
+                margin: 0 auto 100px auto
+                order: 1
+                padding: 0 20px
+
+            .button_wrap
+                +pad
+                    justify-content: flex-start
+
+    &.lawyer
+        .section__inner
+            +pad
+                display: block
+
+        .txt
+            &:first-child
+                +pad
+                   margin-bottom: 35px
+
+            +pad
+               width: 100%
+               max-width: 640px
+               margin: 0 auto 100px auto
+               order: 1
+               padding: 0 20px
+
+            .button_wrap
+                +pad
+                   justify-content: flex-start
+
+    &.faq
+        margin-top: 100px
+
+        .section__inner
+            padding-top: 100px
+            padding-bottom: 100px
+
+            &:before
+                +pad
+                    right: 20px
+
+            .txt
+                +pad
+                    width: 100%
+                    max-width: 85%
+                    padding: 0 20px
+
+                +small
+                    max-width: 90%
+
+        .img_dec
+            +pad
+                top: 0
+                right: 0
+                bottom: 0
+                left: auto
+                max-width: 100%
+                position: relative
+                margin-top: -20px
+                margin-left: 20px
+
+
+.section
     &__inner
-        width: 100%
-        height: 100%
+        +size(100%, 100%)
         max-width: 1040px
-        //margin: 0 auto
         position: relative
         z-index: 1
 
@@ -49,11 +223,15 @@
             z-index: 10
             width: 48%
             max-width: 430px
+            +pad
+                margin-bottom: 35px
 
             &__title
                 margin-bottom: 55px
                 margin-left: -2px
                 position: relative
+                +pad
+                    margin-bottom: 35px
 
             .en
                 font-size: 14px
@@ -62,12 +240,18 @@
                 letter-spacing: .04em
                 margin-bottom: 20px
                 padding-left: 2px
+                +mobile
+                    font-size: 13px
+                    font-size: 1.3rem
 
             .tw
                 font-size: 40px
                 font-size: 4rem
                 line-height: 1
                 letter-spacing: .1em
+                +mobile
+                    font-size: 28px
+                    font-size: 2.8rem
 
             .desc
                 width: 100%
@@ -76,3 +260,8 @@
                 line-height: 2
                 letter-spacing: .06em
                 margin-bottom: 50px
+
+    .img_group
+        position: relative
+        width: 50%
+        margin-left: -100px

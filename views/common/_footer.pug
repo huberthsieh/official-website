@@ -1,7 +1,7 @@
 footer#footer.footer
     hr.footer_hr
 
-    .footer__inner.d-flex
+    .footer__inner
         .footer__logo
             .logo__wrap
                 a.img(href="index.html")
@@ -26,7 +26,7 @@ footer#footer.footer
                             span.en.d-block
                                 | #{ en }
 
-                ul.d-flex.link__list
+                ul.link__list
                     +item(
                         "專屬機車貸款",
                         "Motorcycle Loans",
@@ -55,15 +55,17 @@ footer#footer.footer
                     )
 
                     +item(
-                        "招募訊息",
-                        "Recruit Information",
-                        "recruit.html",
+                        "常見問題",
+                        "Frequently Asked Question",
+                        "faq.html",
                         "modal-fade-in",
                         "1.2s",
                         "once"
                     )
 
-                ul.d-flex.link__list
+
+
+                ul.link__list
                     +item(
                         "文章專欄",
                         "Article Column",
@@ -73,10 +75,11 @@ footer#footer.footer
                         "once"
                     )
 
+
                     +item(
-                        "常見問題",
-                        "Frequently Asked Question",
-                        "faq.html",
+                        "招募訊息",
+                        "Recruit Information",
+                        "recruit.html",
                         "modal-fade-in",
                         "2s",
                         "once"
@@ -92,13 +95,23 @@ footer#footer.footer
                     )
 
                     +item(
-                        "熊蓋源起",
-                        "Originate From",
-                        "originate.html",
+                        "熊蓋團隊",
+                        "Our Team",
+                        "team.html",
                         "modal-fade-in",
                         "2.8s",
                         "once"
                     )
+
+                    // -
+                        +item(
+                            "熊蓋源起",
+                            "Originate From",
+                            "originate.html",
+                            "modal-fade-in",
+                            "2.8s",
+                            "once"
+                        )
 
             .footer__bottom.d-flex.justify-between
                 .social__link.d-flex
@@ -112,8 +125,8 @@ footer#footer.footer
                         span.fa-brands.fa-facebook-square
 
                 p
-                    | &copy;
-                    | 2022 All Rights Reserved. Design by
-                    a(href='index.html') Hubert Hsieh
+                    //| &copy;
+                    //| 2022 All Rights Reserved. Design by
+                    a(href='index.html') © 海鑫資訊科技
 
 

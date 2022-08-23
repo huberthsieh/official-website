@@ -11,7 +11,8 @@ const handleJarallaxFunc = () => {
     Handle Waypoint Effect
 */
 const handleWaypointFunc = () => {
-    const target = Array.from(document.getElementsByClassName('scroll__animation'));
+    // const target = Array.from(document.getElementsByClassName('scroll__animation'));
+    const target = [...document.getElementsByClassName('scroll__animation')];
 
     const onScrollInit = ( items ) => {
         items.forEach( item => {
