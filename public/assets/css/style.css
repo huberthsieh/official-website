@@ -11568,226 +11568,6 @@ readers do not read off random characters that represent icons */
   height: auto;
   position: relative;
 }
-.section.banner {
-  position: relative;
-  padding-top: 100px;
-  transition: padding-top 0.3s;
-}
-@media (max-width: 1023px) {
-  .section.banner {
-    padding-top: 60px;
-  }
-}
-@media (max-width: 1023px) {
-  .section.introduction--about {
-    margin-top: -60px;
-  }
-}
-@media (max-width: 1023px) {
-  .section.introduction--warn {
-    margin-top: 100px;
-  }
-}
-@media (max-width: 1023px) {
-  .section.introduction--warn .img_dec {
-    top: 0;
-  }
-}
-@media (max-width: 1023px) {
-  .section.introduction .section__inner {
-    max-width: 640px;
-    padding: 120px 0;
-  }
-}
-@media (max-width: 1023px) {
-  .section.introduction .section__inner:before {
-    right: 20px;
-  }
-}
-@media (max-width: 1023px) {
-  .section.introduction .section__inner .txt {
-    width: 100%;
-    padding: 0 20px;
-    max-width: 85%;
-  }
-}
-@media (max-width: 1023px) {
-  .section.introduction .img_dec {
-    right: 0;
-    left: auto;
-    max-width: 100%;
-    bottom: 0;
-    position: relative;
-    margin-top: -20px;
-    margin-left: 20px;
-  }
-}
-.section.advantage {
-  padding-top: 100px;
-}
-@media (max-width: 1023px) {
-  .section.advantage {
-    padding-top: 0;
-  }
-}
-@media (max-width: 1023px) {
-  .section.advantage .section__inner {
-    display: block;
-  }
-}
-@media (max-width: 1023px) {
-  .section.advantage .txt {
-    width: 100%;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-}
-@media (max-width: 1023px) {
-  .section.advantage .txt .button_wrap {
-    justify-content: flex-start;
-  }
-}
-.section.background {
-  height: 600px;
-}
-@media (max-width: 1023px) {
-  .section.background {
-    margin-top: 0;
-  }
-}
-.section.background .jarallax {
-  height: 100%;
-}
-@media (max-width: 1023px) {
-  .section.service {
-    margin-top: 100px;
-  }
-}
-@media (max-width: 1023px) {
-  .section.service .section__inner {
-    flex-direction: column;
-  }
-}
-@media (max-width: 1023px) {
-  .section.service .img_group {
-    width: 100%;
-    max-width: 640px;
-    margin: 0 auto;
-    order: 2;
-  }
-}
-@media (max-width: 1023px) {
-  .section.service .img_group .img__service--bottom {
-    margin-right: -20px;
-  }
-}
-@media (max-width: 1023px) {
-  .section.service .txt {
-    width: 100%;
-    max-width: 640px;
-    margin: 0 auto 100px auto;
-    order: 1;
-    padding: 0 20px;
-  }
-}
-@media (max-width: 1023px) {
-  .section.team {
-    margin-bottom: 0;
-  }
-}
-@media (max-width: 1023px) {
-  .section.team .section__inner {
-    margin-top: 0;
-    padding-bottom: 0;
-    display: block;
-  }
-}
-@media (max-width: 1023px) {
-  .section.team .section__inner:after {
-    opacity: 0;
-  }
-}
-@media (max-width: 1023px) {
-  .section.team .txt:first-child {
-    margin-bottom: 35px;
-  }
-}
-@media (max-width: 1023px) {
-  .section.team .txt {
-    width: 100%;
-    max-width: 640px;
-    margin: 0 auto 100px auto;
-    order: 1;
-    padding: 0 20px;
-  }
-}
-@media (max-width: 1023px) {
-  .section.team .txt .button_wrap {
-    justify-content: flex-start;
-  }
-}
-@media (max-width: 1023px) {
-  .section.lawyer .section__inner {
-    display: block;
-  }
-}
-@media (max-width: 1023px) {
-  .section.lawyer .txt:first-child {
-    margin-bottom: 35px;
-  }
-}
-@media (max-width: 1023px) {
-  .section.lawyer .txt {
-    width: 100%;
-    max-width: 640px;
-    margin: 0 auto 100px auto;
-    order: 1;
-    padding: 0 20px;
-  }
-}
-@media (max-width: 1023px) {
-  .section.lawyer .txt .button_wrap {
-    justify-content: flex-start;
-  }
-}
-.section.faq {
-  margin-top: 100px;
-}
-.section.faq .section__inner {
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-@media (max-width: 1023px) {
-  .section.faq .section__inner:before {
-    right: 20px;
-  }
-}
-@media (max-width: 1023px) {
-  .section.faq .section__inner .txt {
-    width: 100%;
-    max-width: 85%;
-    padding: 0 20px;
-  }
-}
-@media (max-width: 574px) {
-  .section.faq .section__inner .txt {
-    max-width: 90%;
-  }
-}
-@media (max-width: 1023px) {
-  .section.faq .img_dec {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: auto;
-    max-width: 100%;
-    position: relative;
-    margin-top: -20px;
-    margin-left: 20px;
-  }
-}
-
 .section__inner {
   width: 100%;
   height: 100%;
@@ -11953,4 +11733,231 @@ readers do not read off random characters that represent icons */
   width: 2px;
   height: 10px;
   background: white;
+}
+
+.section.banner {
+  position: relative;
+  padding-top: 100px;
+  transition: padding-top 0.3s;
+}
+@media (max-width: 1023px) {
+  .section.banner {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .section.introduction--about {
+    margin-top: -60px;
+  }
+}
+@media (max-width: 1023px) {
+  .section.introduction--warn {
+    margin-top: 100px;
+  }
+}
+@media (max-width: 1023px) {
+  .section.introduction--warn .img_dec {
+    top: 0;
+  }
+}
+@media (max-width: 1023px) {
+  .section.introduction .section__inner {
+    max-width: 640px;
+    padding: 120px 0;
+  }
+}
+@media (max-width: 1023px) {
+  .section.introduction .section__inner:before {
+    right: 20px;
+  }
+}
+@media (max-width: 1023px) {
+  .section.introduction .section__inner .txt {
+    width: 100%;
+    padding: 0 20px;
+    max-width: 85%;
+  }
+}
+@media (max-width: 1023px) {
+  .section.introduction .img_dec {
+    right: 0;
+    left: auto;
+    max-width: 100%;
+    bottom: 0;
+    position: relative;
+    margin-top: -20px;
+    margin-left: 20px;
+  }
+}
+
+.section.advantage {
+  padding-top: 100px;
+}
+@media (max-width: 1023px) {
+  .section.advantage {
+    padding-top: 0;
+  }
+}
+@media (max-width: 1023px) {
+  .section.advantage .section__inner {
+    display: block;
+  }
+}
+@media (max-width: 1023px) {
+  .section.advantage .txt {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+@media (max-width: 1023px) {
+  .section.advantage .txt .button_wrap {
+    justify-content: flex-start;
+  }
+}
+
+.section.background {
+  height: 600px;
+}
+@media (max-width: 1023px) {
+  .section.background {
+    margin-top: 0;
+  }
+}
+.section.background .jarallax {
+  height: 100%;
+}
+
+@media (max-width: 1023px) {
+  .section.service {
+    margin-top: 100px;
+  }
+}
+@media (max-width: 1023px) {
+  .section.service .section__inner {
+    flex-direction: column;
+  }
+}
+@media (max-width: 1023px) {
+  .section.service .img_group {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    order: 2;
+  }
+}
+@media (max-width: 1023px) {
+  .section.service .img_group .img__service--bottom {
+    margin-right: -20px;
+  }
+}
+@media (max-width: 1023px) {
+  .section.service .txt {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto 100px auto;
+    order: 1;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .section.team {
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 1023px) {
+  .section.team .section__inner {
+    margin-top: 0;
+    padding-bottom: 0;
+    display: block;
+  }
+}
+@media (max-width: 1023px) {
+  .section.team .section__inner:after {
+    opacity: 0;
+  }
+}
+@media (max-width: 1023px) {
+  .section.team .txt:first-child {
+    margin-bottom: 35px;
+  }
+}
+@media (max-width: 1023px) {
+  .section.team .txt {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto 100px auto;
+    order: 1;
+    padding: 0 20px;
+  }
+}
+@media (max-width: 1023px) {
+  .section.team .txt .button_wrap {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 1023px) {
+  .section.lawyer .section__inner {
+    display: block;
+  }
+}
+@media (max-width: 1023px) {
+  .section.lawyer .txt:first-child {
+    margin-bottom: 35px;
+  }
+}
+@media (max-width: 1023px) {
+  .section.lawyer .txt {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto 100px auto;
+    order: 1;
+    padding: 0 20px;
+  }
+}
+@media (max-width: 1023px) {
+  .section.lawyer .txt .button_wrap {
+    justify-content: flex-start;
+  }
+}
+
+.section.faq {
+  margin-top: 100px;
+}
+.section.faq .section__inner {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+@media (max-width: 1023px) {
+  .section.faq .section__inner:before {
+    right: 20px;
+  }
+}
+@media (max-width: 1023px) {
+  .section.faq .section__inner .txt {
+    width: 100%;
+    max-width: 85%;
+    padding: 0 20px;
+  }
+}
+@media (max-width: 574px) {
+  .section.faq .section__inner .txt {
+    max-width: 90%;
+  }
+}
+@media (max-width: 1023px) {
+  .section.faq .img_dec {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    max-width: 100%;
+    position: relative;
+    margin-top: -20px;
+    margin-left: 20px;
+  }
 }
