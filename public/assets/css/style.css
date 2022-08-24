@@ -11697,7 +11697,7 @@ readers do not read off random characters that represent icons */
 }
 .accordion button[aria-expanded=true] + .accordion__content {
   opacity: 1;
-  max-height: 9rem;
+  max-height: 20rem;
   padding: 1rem 0;
 }
 .accordion button[aria-expanded=true] .icon::after {
@@ -11925,8 +11925,10 @@ readers do not read off random characters that represent icons */
   }
 }
 
-.section.faq {
-  margin-top: 100px;
+@media (max-width: 1023px) {
+  .section.faq {
+    margin-top: 100px;
+  }
 }
 .section.faq .section__inner {
   padding-top: 100px;
