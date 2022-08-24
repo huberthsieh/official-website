@@ -1,16 +1,11 @@
 // Plugin import
 const gulp = require('gulp');
-const $ = require('gulp-load-plugins')({lazy: false});
 const sass = require('gulp-sass')(require('sass'));
 const pug = require('gulp-pug');
 const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
-const watch = require('gulp-watch');
 const clean = require('gulp-clean');
 const browserSync = require('browser-sync').create();
-
-const del = require('del');
-const path = require('path');
 
 // Compile pug's files to public
 const handlePugCompile = () => {
