@@ -1,3 +1,5 @@
+include ../components/organisms/_jarallaxImage
+
 section.section.introduction.introduction--about
     .section__inner.pt-200.pb-200.m-auto.before-effect.scroll__animation(
         data-os-animation="slide-in-right"
@@ -34,11 +36,10 @@ section.section.introduction.introduction--about
                     span.arrow
 
     .img_dec(data-place="bottom").scroll__animation(
-        data-os-animation="slide-in-right"
-        data-os-animation-delay="0"
+        data-os-animation="slide-in-right",
+        data-os-animation-delay="0",
         data-os-animation-Frequency="once"
     )
-        include ../components/organisms/_jarallaxImage
         +jarallaxImage(
             "https://images.pexels.com/photos/6266641/pexels-photo-6266641.jpeg",
             "introduction",

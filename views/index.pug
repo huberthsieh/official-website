@@ -1,3 +1,5 @@
+include ./section/_sectionBanner
+
 doctype html
 html(lang="zh-Hant")
 
@@ -10,8 +12,9 @@ html(lang="zh-Hant")
 
         main
             #content.content
+
                 // Banner
-                include ./section/_sectionBanner
+                +sectionBanner('https://youtu.be/w-wnanr0CxQ')
 
                 // Introduction
                 include ./section/_sectionIntroduction
@@ -42,6 +45,6 @@ html(lang="zh-Hant")
 
         #cover__menu.cover__menu
 
-    include common/_footer
+        include common/_footer
 
-    include common/_script
+        include common/_script

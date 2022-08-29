@@ -410,6 +410,9 @@ html * {
 .d-flex.justify-between {
   justify-content: space-between;
 }
+.d-flex.justify-center {
+  justify-content: center;
+}
 
 .after-block:after {
   content: "";
@@ -11735,6 +11738,53 @@ readers do not read off random characters that represent icons */
   background: white;
 }
 
+fieldset {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 30px;
+}
+fieldset:last-child {
+  margin-bottom: 0;
+}
+fieldset .input__title {
+  color: #161616;
+  font-size: 16px;
+  font-size: 1.6rem;
+  padding: 10px;
+}
+fieldset .input--required {
+  margin-right: 10px;
+  color: #e54530;
+}
+fieldset input {
+  max-width: 640px;
+  width: 100%;
+  height: 56px;
+  border: solid 1px #161616;
+  outline: none;
+  padding: 10px 20px;
+  background-color: #f6f6f6;
+  font-size: 16px;
+  font-size: 1.6rem;
+  color: #161616;
+}
+fieldset input::placeholder {
+  color: rgba(22, 22, 22, 0.3);
+}
+fieldset textarea {
+  border: solid 1px #161616;
+  color: #161616;
+  width: 100%;
+  height: 210px;
+  padding: 25px;
+  resize: none;
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+fieldset textarea::placeholder {
+  color: rgba(22, 22, 22, 0.3);
+}
+
 .section.banner {
   position: relative;
   padding-top: 100px;
@@ -11962,4 +12012,161 @@ readers do not read off random characters that represent icons */
     margin-top: -20px;
     margin-left: 20px;
   }
+}
+
+@media (max-width: 1023px) {
+  section.contact {
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 1023px) {
+  section.contact .section__inner {
+    display: block;
+  }
+}
+@media (max-width: 1023px) {
+  section.contact .section__inner:after {
+    opacity: 0;
+  }
+}
+@media (max-width: 1023px) {
+  section.contact .section__inner .txt {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto 100px auto;
+    padding: 0 20px;
+  }
+}
+section.contact .txt__content span {
+  font-size: 16px;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.form__container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+}
+@media (max-width: 1023px) {
+  .form__container {
+    max-width: 640px;
+    padding: 0 20px;
+  }
+}
+
+.entry__link {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 1023px) {
+  .entry__link {
+    display: block;
+    height: auto;
+    margin-top: 0;
+  }
+}
+.entry__item {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: block;
+}
+@media (max-width: 1023px) {
+  .entry__item {
+    width: 100%;
+    height: 300px;
+  }
+}
+.entry__item:hover .bg {
+  transform: scale(1.1);
+}
+.entry__item:hover .txt {
+  background-color: rgba(33, 30, 123, 0.7);
+}
+.entry__item:hover .button__wrap {
+  background-color: white;
+}
+.entry__item:hover .button__wrap span.text {
+  color: #080370;
+}
+.entry__item:hover .button__wrap span.arrow {
+  border-color: transparent transparent transparent #080370;
+  right: 20px;
+}
+.entry__item:hover .button__wrap span.arrow:before {
+  background-color: #080370;
+}
+.entry__item .bg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: transform 0.6s cubic-bezier(0.3, 0.1, 0.3, 1);
+  transform: scale(1);
+}
+.entry__item .txt {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  background-color: rgba(22, 22, 22, 0.7);
+  transition: background-color 0.6s cubic-bezier(0.3, 0.1, 0.3, 1);
+}
+.entry__item .txt__inner {
+  text-align: center;
+}
+.entry__item .txt__inner .en, .entry__item .txt__inner .tw {
+  letter-spacing: 0.1rem;
+}
+.entry__item .txt__inner .en {
+  font-size: 18px;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+@media (max-width: 1023px) {
+  .entry__item .txt__inner .en {
+    font-size: 13px;
+    font-size: 1.3rem;
+  }
+}
+.entry__item .txt__inner .tw {
+  font-size: 36px;
+  font-size: 3.6rem;
+  margin-bottom: 30px;
+}
+@media (max-width: 1023px) {
+  .entry__item .txt__inner .tw {
+    font-size: 18px;
+    font-size: 1.8rem;
+  }
+}
+.entry__item .button__wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 250px;
+  height: 70px;
+  text-align: left;
+  padding: 0 30px;
+  line-height: 70px;
+  z-index: 2;
+  border: solid 1px white;
+  background-color: transparent;
+  transition: all 0.6s cubic-bezier(0.3, 0.1, 0.3, 1);
 }
