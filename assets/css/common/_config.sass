@@ -61,6 +61,9 @@ html
     display: block
 
 .before-block
+    &[data-before-color=black]:before
+        background-color: $black
+
     &:before
         content: ""
         width: 200%
@@ -70,6 +73,12 @@ html
         position: absolute
         right: 0
         top: 0
+        transform: scaleX(0) translateZ(-1px)
+        transform-origin: right
+        transition: transform .6s cubic-bezier(.41,.05,.94,.65)
+
+    &.block-in:before
+        transform: scaleX(1) translateZ(-1px)
 
 .d-flex
     display: flex
@@ -83,6 +92,9 @@ html
         justify-content: center
 
 .after-block
+    &[data-after-color=black]:after
+        background-color: $black
+
     &:after
         content: ""
         width: 200%
@@ -93,12 +105,12 @@ html
         z-index: -1
         left: 0
         top: 100px
-        transform: scaleX(0)
+        transform: scaleX(0) translateZ(-1px)
         transform-origin: left
-        transition: transform .6s cubic-bezier(.41,.05,.94,.65)
+        transition: transform .6s .6s cubic-bezier(.41,.05,.94,.65)
 
     &.block-in:after
-        transform: scaleX(1)
+        transform: scaleX(1) translateZ(-1px)
 
 
 .font-weight-300

@@ -7,7 +7,11 @@ footer#footer.footer
                 a.img(href="index.html")
                 span.en.color-white OFFICIAL SITE
 
-        .footer__link
+        .footer__link.scroll__animation(
+            data-os-animation="footer-fade-in"
+            data-os-animation-delay=delay
+            data-os-animation-Frequency="once"
+        )
             .footer__top
                 mixin item(tw, en, href, animation, delay, frequency)
                     - href = href || "javascript:void(0);"
@@ -64,7 +68,6 @@ footer#footer.footer
                     )
 
 
-
                 ul.link__list
                     +item(
                         "文章專欄",
@@ -74,7 +77,6 @@ footer#footer.footer
                         "1.6s",
                         "once"
                     )
-
 
                     +item(
                         "招募訊息",

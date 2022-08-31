@@ -11,6 +11,7 @@ section.section.contact
                     data-os-animation-delay="0s"
                     data-os-animation-Frequency="once"
                 ) Contact Us
+
                 span.tw.d-block.opacity-0.scroll__animation(
                     data-os-animation="slide-in-bottom"
                     data-os-animation-delay=".4s"
@@ -67,7 +68,7 @@ section.section.contact
                         else
                             .input__title
                                 span.input--required ※
-                                | #{ title }
+                                | #{ text }
                             input(id=id name=name type=type placeholder=placeholder required aria-required="true")
 
                 +fieldset(
@@ -117,23 +118,4 @@ section.section.contact
                     "button"
                 )
 
-    .entry__link.mt-200
-        a(href="javascript:void(0);").entry__item
-            .bg(style="background-image: url('./assets/images/application.jpg');")
-            .txt
-                .txt__inner
-                    span.en.color-white.d-block Application
-                    span.tw.color-white.d-block 立即線上申請
-                    .button__wrap
-                        span.text Apply now
-                        span.arrow
-
-        a(href="javascript:void(0);").entry__item
-            .bg(style="background-image: url('./assets/images/chat.jpg');")
-            .txt
-                .txt__inner
-                    span.en.color-white.d-block Customer Service
-                    span.tw.color-white.d-block 聯繫線上客服
-                    .button__wrap
-                        span.text Chat support
-                        span.arrow
+    include ../common/_entry

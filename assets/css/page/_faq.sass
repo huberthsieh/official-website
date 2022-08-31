@@ -1,0 +1,49 @@
+.faq__container
+    background-color: white
+
+    &__inner
+        background-color: white
+        +size(100%, 100%)
+        max-width: 1040px
+        padding: 60px 30px
+        margin: 0 auto
+        position: relative
+        z-index: 0
+        transform-style: preserve-3d
+
+        .txt
+            position: relative
+            z-index: 10
+            width: 48%
+            max-width: 430px
+            +pad
+                width: 100%
+                margin-bottom: 35px
+
+            &__title
+                margin-bottom: 55px
+                margin-left: -2px
+                position: relative
+                +pad
+                    margin-bottom: 35px
+
+            .en
+                font-size: 14px
+                font-size: 1.4rem
+                line-height: 1
+                letter-spacing: .04em
+                margin-bottom: 20px
+                padding-left: 2px
+                +mobile
+                    font-size: 13px
+                    font-size: 1.3rem
+
+            .tw
+                font-size: 40px
+                font-size: 4rem
+                line-height: 1
+                letter-spacing: .1em
+                +mobile
+                    font-size: 28px
+                    font-size: 2.8rem
+

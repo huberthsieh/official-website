@@ -390,6 +390,9 @@ html * {
   display: block;
 }
 
+.before-block[data-before-color=black]:before {
+  background-color: #161616;
+}
 .before-block:before {
   content: "";
   width: 200%;
@@ -399,6 +402,12 @@ html * {
   position: absolute;
   right: 0;
   top: 0;
+  transform: scaleX(0) translateZ(-1px);
+  transform-origin: right;
+  transition: transform 0.6s cubic-bezier(0.41, 0.05, 0.94, 0.65);
+}
+.before-block.block-in:before {
+  transform: scaleX(1) translateZ(-1px);
 }
 
 .d-flex {
@@ -414,6 +423,9 @@ html * {
   justify-content: center;
 }
 
+.after-block[data-after-color=black]:after {
+  background-color: #161616;
+}
 .after-block:after {
   content: "";
   width: 200%;
@@ -424,12 +436,12 @@ html * {
   z-index: -1;
   left: 0;
   top: 100px;
-  transform: scaleX(0);
+  transform: scaleX(0) translateZ(-1px);
   transform-origin: left;
-  transition: transform 0.6s cubic-bezier(0.41, 0.05, 0.94, 0.65);
+  transition: transform 0.6s 0.6s cubic-bezier(0.41, 0.05, 0.94, 0.65);
 }
 .after-block.block-in:after {
-  transform: scaleX(1);
+  transform: scaleX(1) translateZ(-1px);
 }
 
 .font-weight-300 {
@@ -488,11 +500,11 @@ html * {
 @keyframes modal-fade-in {
   0% {
     opacity: 0;
-    top: 15px;
+    transform: translate3d(0, 15px, 0);
   }
   100% {
     opacity: 1;
-    top: 0;
+    transform: translate3d(0, 0, 0);
   }
 }
 @keyframes modal-fade-out {
@@ -11657,6 +11669,13 @@ readers do not read off random characters that represent icons */
 .accordion__title {
   font-size: 18px;
   font-size: 1.8rem;
+  color: white;
+}
+.accordion__title[data-color=black] {
+  color: #161616;
+}
+.accordion__title[data-color=main] {
+  color: #080370;
 }
 @media (max-width: 574px) {
   .accordion__title {
@@ -11665,7 +11684,20 @@ readers do not read off random characters that represent icons */
   }
 }
 .accordion__item {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  color: white;
+}
+.accordion__item[data-color=black] {
+  color: #161616;
+}
+.accordion__item[data-color=black] button[aria-expanded=true] {
+  border-color: #161616;
+}
+.accordion__item[data-color=main] {
+  color: #080370;
+}
+.accordion__item[data-color=main] button[aria-expanded=true] {
+  border-color: #080370;
 }
 .accordion__item:last-child {
   margin-bottom: 50px;
@@ -11717,25 +11749,35 @@ readers do not read off random characters that represent icons */
   border: 1px solid white;
   border-radius: 22px;
 }
-.accordion .icon::before {
+.accordion .icon[data-color=black] {
+  border-color: #161616;
+}
+.accordion .icon[data-color=black]:before, .accordion .icon[data-color=black]:after {
+  background: #161616;
+}
+.accordion .icon[data-color=main] {
+  border-color: #080370;
+}
+.accordion .icon[data-color=main]:before, .accordion .icon[data-color=main]:after {
+  background: #080370;
+}
+.accordion .icon:before, .accordion .icon:after {
   display: block;
   position: absolute;
   content: "";
+  background: white;
+}
+.accordion .icon::before {
   top: 9px;
   left: 5px;
   width: 10px;
   height: 2px;
-  background: white;
 }
 .accordion .icon::after {
-  display: block;
-  position: absolute;
-  content: "";
   top: 5px;
   left: 9px;
   width: 2px;
   height: 10px;
-  background: white;
 }
 
 fieldset {
@@ -11783,6 +11825,19 @@ fieldset textarea {
 }
 fieldset textarea::placeholder {
   color: rgba(22, 22, 22, 0.3);
+}
+
+.form__container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+}
+@media (max-width: 1023px) {
+  .form__container {
+    max-width: 640px;
+    padding: 0 20px;
+  }
 }
 
 .section.banner {
@@ -12014,48 +12069,6 @@ fieldset textarea::placeholder {
   }
 }
 
-@media (max-width: 1023px) {
-  section.contact {
-    margin-bottom: 0;
-  }
-}
-@media (max-width: 1023px) {
-  section.contact .section__inner {
-    display: block;
-  }
-}
-@media (max-width: 1023px) {
-  section.contact .section__inner:after {
-    opacity: 0;
-  }
-}
-@media (max-width: 1023px) {
-  section.contact .section__inner .txt {
-    width: 100%;
-    max-width: 640px;
-    margin: 0 auto 100px auto;
-    padding: 0 20px;
-  }
-}
-section.contact .txt__content span {
-  font-size: 16px;
-  font-size: 1.6rem;
-  margin-bottom: 10px;
-}
-
-.form__container {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 480px;
-  position: relative;
-}
-@media (max-width: 1023px) {
-  .form__container {
-    max-width: 640px;
-    padding: 0 20px;
-  }
-}
-
 .entry__link {
   width: 100%;
   height: 500px;
@@ -12169,4 +12182,98 @@ section.contact .txt__content span {
   border: solid 1px white;
   background-color: transparent;
   transition: all 0.6s cubic-bezier(0.3, 0.1, 0.3, 1);
+}
+
+.faq__container {
+  background-color: white;
+}
+.faq__container__inner {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  max-width: 1040px;
+  padding: 60px 30px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 0;
+  transform-style: preserve-3d;
+}
+.faq__container__inner .txt {
+  position: relative;
+  z-index: 10;
+  width: 48%;
+  max-width: 430px;
+}
+@media (max-width: 1023px) {
+  .faq__container__inner .txt {
+    width: 100%;
+    margin-bottom: 35px;
+  }
+}
+.faq__container__inner .txt__title {
+  margin-bottom: 55px;
+  margin-left: -2px;
+  position: relative;
+}
+@media (max-width: 1023px) {
+  .faq__container__inner .txt__title {
+    margin-bottom: 35px;
+  }
+}
+.faq__container__inner .txt .en {
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+  padding-left: 2px;
+}
+@media (max-width: 767px) {
+  .faq__container__inner .txt .en {
+    font-size: 13px;
+    font-size: 1.3rem;
+  }
+}
+.faq__container__inner .txt .tw {
+  font-size: 40px;
+  font-size: 4rem;
+  line-height: 1;
+  letter-spacing: 0.1em;
+}
+@media (max-width: 767px) {
+  .faq__container__inner .txt .tw {
+    font-size: 28px;
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .section.contact {
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 1023px) {
+  .section.contact .section__inner {
+    display: block;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+@media (max-width: 1023px) {
+  .section.contact .section__inner:after {
+    opacity: 0;
+  }
+}
+@media (max-width: 1023px) {
+  .section.contact .section__inner .txt {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+  }
+}
+.section.contact .txt__content span {
+  font-size: 16px;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
 }

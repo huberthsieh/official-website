@@ -2,12 +2,33 @@
     &__title
         font-size: 18px
         font-size: 1.8rem
+        color: white
+
+        &[data-color=black]
+            color: $black
+
+        &[data-color=main]
+            color: $main
+
         +small
             font-size: 16px
             font-size: 1.6rem
 
     &__item
-        margin-bottom: 16px
+        margin-bottom: 20px
+        color: white
+
+        &[data-color=black]
+            color: $black
+
+            button[aria-expanded='true']
+                border-color: $black
+
+        &[data-color=main]
+            color: $main
+
+            button[aria-expanded='true']
+                border-color: $main
 
         &:last-child
             margin-bottom: 50px
@@ -56,22 +77,30 @@
         border: 1px solid white
         border-radius: 22px
 
-        &::before
+        &[data-color=black]
+            border-color: $black
+            &:before, &:after
+                background: $black
+
+        &[data-color=main]
+            border-color: $main
+            &:before, &:after
+                background: $main
+
+        &:before, &:after
             display: block
             position: absolute
             content: ''
+            background: white
+
+        &::before
             top: 9px
             left: 5px
             width: 10px
             height: 2px
-            background: white
 
         &::after
-            display: block
-            position: absolute
-            content: ''
             top: 5px
             left: 9px
             width: 2px
             height: 10px
-            background: white
