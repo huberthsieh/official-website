@@ -1,0 +1,64 @@
+.article
+    &__container
+        .jarallax
+            height: 600px
+            margin-top: 100px
+            +pad
+                height: 360px
+                margin-top: 60px
+
+        &__inner
+            position: relative
+            width: 100%
+            max-width: 1280px
+            margin: 0 auto
+            display: flex
+            padding-top: 15px
+            +pad
+                padding-top: 10px
+
+    &__list
+        +flex(flex-start, center)
+        flex-wrap: wrap
+
+        li
+            width: calc(100% / 2 - 30px)
+            margin: 15px
+            +pad
+                width: 100%
+                margin: 0 10px 10px 10px
+
+    &__item
+
+        &__inner
+            +size(100%, 100%)
+            background-color: $main-light
+            color: white
+            font-size: 16px
+            line-height: 1.6em
+            overflow: hidden
+            position: relative
+            text-align: left
+
+            img
+                width: 100%
+
+        &__txt
+            padding: 10px 20px 30px 20px
+
+    &__category
+        position: relative
+        padding: 20px
+
+    &__title
+        font-size: 18px
+        font-size: 1.8rem
+        letter-spacing: 0.1rem
+        padding: 10px 0 30px 0
+
+    &__more
+        position: relative
+        max-width: 160px
+        display: block
+        border: solid 1px white
+        padding: 10px 0 10px 20px

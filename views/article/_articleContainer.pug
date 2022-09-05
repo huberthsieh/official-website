@@ -1,0 +1,23 @@
+include ../components/organisms/_jarallaxBackground
+
+.article__container
+    +jarallaxBackground('../assets/images/article.jpg')
+
+    .article__container__inner
+        ul.article__list
+            mixin item(category, title)
+                li
+                    a.article__item(href="javascript:void(0);")
+                        figure.article__item__inner
+                            .article__category #{ category }
+                            img(src="./assets/images/application.jpg")
+                            figcaption.article__item__txt
+                                .article__title #{ title }
+                                .article__more(href="javascript:void(0);")
+                                    span.text Read More
+                                    span.arrow
+
+            +item("貸款資訊", "2022最新！機車貸款10大重點，順利核貸55萬就看這篇！")
+            +item("貸款資訊", "2022最新！機車貸款10大重點，順利核貸55萬就看這篇！")
+            +item("貸款資訊", "2022最新！機車貸款10大重點，順利核貸55萬就看這篇！")
+            +item("貸款資訊", "2022最新！機車貸款10大重點，順利核貸55萬就看這篇！")
