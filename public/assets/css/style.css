@@ -11850,6 +11850,90 @@ fieldset textarea::placeholder {
   }
 }
 
+.compare__wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+@media (max-width: 1023px) {
+  .compare__wrapper {
+    padding: 100px 0;
+  }
+}
+
+.compare__table {
+  width: 100%;
+  max-width: calc(var(--table-column-width) * var(--table-columns-visible));
+  margin: 0 auto;
+  overflow-y: scroll;
+  --table-gap: 2.5rem 1.25rem;
+  --table-columns: 5;
+  --table-columns-visible: 4;
+  --table-column-width: 250px;
+}
+
+.compare__cell {
+  display: flex;
+  flex-direction: column;
+  padding: var(--table-gap);
+  border-bottom: 1px solid #4d5974;
+}
+.compare__cell--sticky {
+  position: sticky;
+  left: 0;
+}
+.compare__cell--header {
+  background-color: #e0e0e0;
+}
+.compare__cell--spacer {
+  background-color: white;
+}
+.compare__cell--brand h2 {
+  color: var(--color-dark-secondary);
+  margin: 0;
+}
+.compare__cell.compare--bear {
+  color: #211e7b;
+}
+
+.compare__header {
+  background-color: white;
+  position: sticky;
+  top: 0;
+}
+
+.compare__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--table-columns), minmax(var(--table-column-width), 1fr));
+}
+
+.compare__text {
+  font-size: 14px;
+  font-size: 1.4rem;
+  color: #161616;
+}
+.compare__text.compare--caption {
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+
+@media screen and (max-width: 800px) {
+  .compare__header, .compare__footer {
+    display: none;
+  }
+  .compare__table {
+    --table-columns: 2;
+    --table-column-width: auto;
+  }
+  .compare__cell--full {
+    grid-column: 1/-1;
+  }
+  .compare__cell::before {
+    content: attr(aria-label);
+    font-weight: normal;
+    line-height: 2.5rem;
+    color: var(--color-light-secondary);
+  }
+}
 .section.banner {
   position: relative;
   padding-top: 100px;
@@ -12474,4 +12558,24 @@ fieldset textarea::placeholder {
 .article__content img {
   width: 100%;
   max-width: 640px;
+}
+
+.moto__container .jarallax {
+  height: 600px;
+  margin-top: 100px;
+}
+@media (max-width: 1023px) {
+  .moto__container .jarallax {
+    height: 360px;
+    margin-top: 60px;
+  }
+}
+.moto__container__inner {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  max-width: 1040px;
+  padding: 60px 30px;
+  margin: 0 auto;
+  border: solid 2px red;
 }
