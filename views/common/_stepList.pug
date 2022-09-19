@@ -1,0 +1,38 @@
+include ../components/molecules/_txt
+
+mixin stepList
+    .step__wrapper
+        .step__inner
+            .step__header
+                //- Step Title
+                +txt
+
+                //- 200字
+                .step__dsecription.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-bottom"
+                    data-os-animation-delay="0.4s"
+                    data-os-animation-Frequency="once"
+                )
+                    | 昔日戲言身後事，美人相並立瓊軒，迴樂峰前沙似雪，只是當時已惘然，玉璽不緣歸日角，月斜樓上五更鐘，相見時難別亦難，車走雷聲語未通，重幃深下莫愁堂，半作障泥半作帆，雲母屏風燭影深，西山寇盜莫相侵，清秋幕府井梧寒，蕭條異代不同時，欲把一麾江海去，隔江猶唱後庭花，天階夜色涼如水，唯覺樽前笑不成，身多疾病思田里，上有黃鸝深樹鳴，武帝祠前雲欲散，夜半鐘聲到客船，回日樓臺非甲帳，碧天如水夜雲輕，秋草獨尋人去後，雲雨難忘日月新，仙臺初見五城樓，寒食東風御柳斜。
+
+
+            ul.step__list
+                mixin li(number, title, subtitle, src, delay)
+                    - delay = delay || "0"
+                    li.step__item.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay=delay
+                        data-os-animation-Frequency="once"
+                    )
+                        .step__item__number #{ number }
+                        .step__item__content
+                            p.step__item__title #{ title }
+                            p.step__item__subtitle #{ subtitle }
+                        .step__item__img
+                            img(src=src alt="step")
+
+                +li("01.", "線上申貸", "填寫個人資料或著加LINE詢問", "../assets/images/step1.png")
+                +li("02.", "送件評估", "一天內就能知道審核結果", "../assets/images/step2.png")
+                +li("03.", "對保設定", "對保簽約後至監理站設定", "../assets/images/step3.png")
+                +li("04.", "撥款入帳", "最快24小時內銀行撥款", "../assets/images/step4.png")
+

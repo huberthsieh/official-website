@@ -1,6 +1,7 @@
 .compare__wrapper
     max-width: 1280px
     margin: 0 auto
+    padding: 50px 0
     +pad
         padding: 100px 0
 
@@ -22,10 +23,10 @@
     margin: 0 auto
     overflow-y: scroll
 
-    --table-gap: 2.5rem 1.25rem
+    --table-gap: 2.5rem 2rem
     --table-columns: 5
     --table-columns-visible: 4
-    --table-column-width: 250px
+    --table-column-width: 320px
 
 
 .compare__cell
@@ -73,7 +74,7 @@
         font-size: 1.4rem
 
 
-@media screen and (max-width: 800px)
++pad
     .compare__header, .compare__footer
         display: none
 
