@@ -1,6 +1,3 @@
-include ./index/_sectionBanner
-include ./components/organisms/_jarallaxBackground
-
 doctype html
 html(lang="zh-Hant")
 
@@ -13,14 +10,8 @@ html(lang="zh-Hant")
 
         main
             #content.content.content__team
-                // Banner
-                +jarallaxBackground('../assets/images/team.jpg')
-
-                // Introduction
-                include ./team/_sectionIntroduction
-
-                // Team
-                include ./team/_sectionTeam
+                // Team Main
+                include ./team/_teamContainer
 
                 // Entry Link
                 include ./common/_entry

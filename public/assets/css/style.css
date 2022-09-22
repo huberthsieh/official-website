@@ -233,6 +233,12 @@ table {
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+.img_dec.slide-in-left:before {
+  animation-name: overLay-mask-right;
+  animation-timing-function: cubic-bezier(0.1, 0.5, 0.2, 1);
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
 
 .sales__list {
   max-width: 1280px;
@@ -404,7 +410,7 @@ html *::selection {
   margin-bottom: 300px;
 }
 
-.minus-mt-100.minus-mt-100 {
+.minus-mt-100 {
   margin-top: -100px;
 }
 
@@ -601,6 +607,28 @@ html *::selection {
   }
   100% {
     left: 101%;
+    opacity: 0;
+  }
+}
+@keyframes overLay-mask-left {
+  0% {
+    right: 0;
+    opacity: 0;
+  }
+  1% {
+    right: 100%;
+    opacity: 1;
+  }
+  50% {
+    right: 0;
+    opacity: 1;
+  }
+  99% {
+    right: -100%;
+    opacity: 1;
+  }
+  100% {
+    right: 101%;
     opacity: 0;
   }
 }
@@ -11619,6 +11647,17 @@ readers do not read off random characters that represent icons */
   height: auto;
   position: relative;
 }
+@media (max-width: 1023px) {
+  .section.car .section__inner {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+@media (max-width: 1023px) {
+  .section.car .section__inner .txt.txt {
+    padding: 60px 20px;
+  }
+}
 .section__inner {
   width: 100%;
   height: 100%;
@@ -11638,7 +11677,26 @@ readers do not read off random characters that represent icons */
   transform-origin: right;
   transform: scaleX(0);
 }
-.section__inner.slide-in-right:before {
+.section__inner.before-effect[data-os-animation=slide-in-left] .txt {
+  background-color: white;
+  width: calc(100% - 120px);
+  max-width: 100%;
+  padding: 100px 30px;
+}
+@media (max-width: 1023px) {
+  .section__inner.before-effect[data-os-animation=slide-in-left] .txt {
+    width: 100%;
+  }
+}
+.section__inner.before-effect[data-os-animation=slide-in-left] ~ .img_dec {
+  bottom: -300px;
+}
+.section__inner.before-effect[data-os-animation=slide-in-left]:before {
+  right: auto;
+  left: 130px;
+  transform-origin: left;
+}
+.section__inner.slide-in-right:before, .section__inner.slide-in-left:before {
   transform: scaleX(1);
 }
 .section__inner .txt {
@@ -11969,6 +12027,25 @@ fieldset textarea::placeholder {
 @media (max-width: 1023px) {
   .step__wrapper {
     padding: 0 20px 100px 20px;
+  }
+}
+.step__wrapper.pt-100 {
+  padding-top: 100px;
+}
+.step__wrapper.pt-200 {
+  padding-top: 200px;
+}
+@media (max-width: 1023px) {
+  .step__wrapper.pt-200 {
+    padding-top: 100px;
+  }
+}
+.step__wrapper.pt-300 {
+  padding-top: 300px;
+}
+@media (max-width: 1023px) {
+  .step__wrapper.pt-300 {
+    padding-top: 100px;
   }
 }
 

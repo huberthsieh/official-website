@@ -60,11 +60,13 @@ section.section.contact
                                 span.input--required ※
                                 | #{ text }
                             textarea(placeholder=placeholder maxlength="500")
+
                         else if button
                             .button__wrap
                                 button.button(type=type data-color="main")
                                     span.text=text
                                     span.arrow
+
                         else
                             .input__title
                                 span.input--required ※
@@ -117,5 +119,3 @@ section.section.contact
                     "",
                     "button"
                 )
-
-    include ../common/_entry
