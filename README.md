@@ -27,8 +27,8 @@ This is a website witch can be customized by yourself style.
 
 
 ## 快速開始
-`npm install or yarn install`
-`gulp`
+- `npm install or yarn install`  
+- `gulp`
 
 ## 開發者的～**碎碎唸**   
 > 利用早期的原生開發方式開發網站真的挺不好維護  
