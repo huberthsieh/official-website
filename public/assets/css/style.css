@@ -12040,22 +12040,22 @@ fieldset textarea::placeholder {
     padding: 0 20px 100px 20px;
   }
 }
-.step__wrapper.pt-100 {
+.step__wrapper.pt-100.pt-100 {
   padding-top: 100px;
 }
-.step__wrapper.pt-200 {
+.step__wrapper.pt-200.pt-200 {
   padding-top: 200px;
 }
 @media (max-width: 1023px) {
-  .step__wrapper.pt-200 {
+  .step__wrapper.pt-200.pt-200 {
     padding-top: 100px;
   }
 }
-.step__wrapper.pt-300 {
+.step__wrapper.pt-300.pt-300 {
   padding-top: 300px;
 }
 @media (max-width: 1023px) {
-  .step__wrapper.pt-300 {
+  .step__wrapper.pt-300.pt-300 {
     padding-top: 100px;
   }
 }
@@ -12793,4 +12793,33 @@ fieldset textarea::placeholder {
   padding: 60px 30px;
   margin: 0 auto;
   border: solid 2px red;
+}
+
+.coming__container {
+  position: relative;
+}
+.coming__container ~ .entry__link.entry__link {
+  margin-top: 0;
+}
+.coming__container:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
+.coming__container h2 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  color: white;
+  font-size: 72px;
+  line-height: 2;
+  letter-spacing: 2px;
 }
