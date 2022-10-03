@@ -646,13 +646,13 @@ html *::selection {
   width: 100%;
   height: 100%;
   position: relative;
-  pointer-events: none;
   overflow: hidden;
 }
 .overlay_mask:before {
   content: "";
   width: 100%;
   height: 100%;
+  pointer-events: none;
   display: block;
   position: absolute;
   top: 100%;
@@ -12627,6 +12627,31 @@ fieldset textarea::placeholder {
   }
 }
 
+.article__container .section__banner {
+  position: relative;
+}
+.article__container .section__banner:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
+.article__container .section__banner h2 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  color: white;
+  font-size: 72px;
+  line-height: 2;
+  letter-spacing: 2px;
+}
 .article__container .jarallax {
   height: 600px;
   margin-top: 100px;
@@ -12653,7 +12678,7 @@ fieldset textarea::placeholder {
 }
 .article__list li {
   width: calc(50% - 10px);
-  padding: 5px;
+  padding: 5px 5px 20px;
 }
 @media (max-width: 1023px) {
   .article__list li {
@@ -12681,13 +12706,14 @@ fieldset textarea::placeholder {
   width: 100%;
 }
 .article__item__txt {
-  padding: 10px 0 30px 0;
+  padding: 20px 0 0;
 }
 .article__category {
   position: relative;
-  color: #161616;
-  font-size: 18px;
-  font-size: 1.8rem;
+  color: #080370;
+  font-size: 32px;
+  font-size: 3.2rem;
+  line-height: 1.5;
 }
 .article__title {
   font-size: 22px;
@@ -12699,19 +12725,7 @@ fieldset textarea::placeholder {
 }
 .article__more {
   position: relative;
-  max-width: 160px;
   display: block;
-  border: solid 1px black;
-  padding: 10px 0 10px 20px;
-}
-.article__more span {
-  color: #161616;
-}
-.article__more span.arrow {
-  border-color: transparent transparent transparent #161616;
-}
-.article__more span.arrow:before {
-  background-color: #161616;
 }
 
 .article__container.article__detail__container .article__container__inner {
@@ -12749,6 +12763,12 @@ fieldset textarea::placeholder {
 }
 .article__container.article__detail__container .article__title {
   padding: 20px 0 20px 0;
+}
+.article__container.article__detail__container .article__category {
+  max-width: 160px;
+  font-size: 22px;
+  font-size: 2.2rem;
+  padding: 5px 10px;
 }
 .article__content > * {
   padding: 10px 0;

@@ -1,5 +1,31 @@
 .article
     &__container
+
+        .section__banner
+            position: relative
+
+            &:before
+                content: ""
+                +size(100%, 100%)
+                position: absolute
+                left: 0
+                top: 0
+                background-color: rgba(black, .2)
+                backdrop-filter: blur(10px)
+                z-index: 1
+
+            h2
+                position: absolute
+                left: 50%
+                top: 50%
+                transform: translate(-50%, -50%)
+                z-index: 1
+                color: white
+                font-size: 72px
+                line-height: 2
+                letter-spacing: 2px
+
+
         .jarallax
             height: 600px
             margin-top: 100px
@@ -21,7 +47,7 @@
 
         li
             width: calc(100% / 2 - 10px)
-            padding: 5px
+            padding: 5px 5px 20px
             +pad
                 width: 100%
                 padding: 0 20px 20px 20px
@@ -43,40 +69,18 @@
             overflow: hidden
             position: relative
             text-align: left
-
             img
                 width: 100%
 
         &__txt
-            padding: 10px 0 30px 0
-
-    //&__filter
-    //    +flex(center, center)
-    //    border: solid 2px red
-    //    max-width: 1280px
-    //    margin: 0 auto
-    //    padding: 10px
-    //
-    //    &__item
-    //        font-size: 18px
-    //        font-size: 1.8rem
-    //        padding: 10px 0
-    //        margin: 0 10px
-    //        position: relative
-    //        &:before
-    //            content: ""
-    //            width: 100%
-    //            height: 2px
-    //            position: absolute
-    //            left: 0
-    //            bottom: -10px
-    //            background-color: $main-light
+            padding: 20px 0 0
 
     &__category
         position: relative
-        color: $black
-        font-size: 18px
-        font-size: 1.8rem
+        color: $main
+        font-size: 32px
+        font-size: 3.2rem
+        line-height: 1.5
 
     &__title
         font-size: 22px
@@ -88,18 +92,6 @@
 
     &__more
         position: relative
-        max-width: 160px
         display: block
-        border: solid 1px black
-        padding: 10px 0 10px 20px
-
-        span
-            color: $black
-
-        span.arrow
-            border-color: transparent transparent transparent $black
-
-            &:before
-                background-color: $black
 
 

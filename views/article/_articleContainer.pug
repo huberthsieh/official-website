@@ -1,24 +1,38 @@
 include ../components/organisms/_jarallaxBackground
 
 .article__container
-    +jarallaxBackground('../assets/images/article.jpg')
+
+    .section__banner
+        +jarallaxBackground('../assets/images/article.jpg')
+        h2 焦點資訊
 
     .article__container__inner
         ul.article__list
+
             mixin item(category, title)
                 li&attributes(attributes)
-                    a.article__item(href="javascript:void(0);")
-                        figure.article__item__inner
-                            img(src="./assets/images/application.jpg")
-                            figcaption.article__item__txt
-                                .article__category #{ category }
-                                .article__title #{ title }
-                                .article__more(href="javascript:void(0);")
-                                    span.text Read More
-                                    span.arrow
+                    .overlay_mask
+                        .article__item(href="javascript:void(0);")
+                            figure.article__item__inner
+                                img(src="./assets/images/application.jpg")
+                                figcaption.article__item__txt
+                                    .article__category #{ category }
+                                    .article__title #{ title }
+                                    //.article__more(href="javascript:void(0);")
+                                    //    span.text Read More
+                                    //    span.arrow
+
+                                .article__more.button_wrap.color-white.d-flex.justify-end.opacity-0.scroll__animation(
+                                    data-os-animation="slide-in-bottom"
+                                    data-os-animation-delay="0s"
+                                    data-os-animation-Frequency="once"
+                                )
+                                    a.button(href='article_detail.html')
+                                        span.text Read more
+                                        span.arrow
 
             +item("貸款資訊", "2022最新！機車貸款10大重點，順利核貸55萬就看這篇！")
-            +item("貸款資訊", "2022最新！機車貸款10大重點，順利核貸55萬就看這篇！")
+            +item("貸款資訊", "二胎房貸是什麼？2022申請額度、利率一次看！")
 
-            +item("貸款資訊", "2022最新！機車貸款10大重點，順利核貸55萬就看這篇！")
+            +item("貸款資訊", "2022汽車貸款條件、申請流程及利率６大重點一次看！")
             +item("貸款資訊", "2022最新！機車貸款10大重點，順利核貸55萬就看這篇！")
