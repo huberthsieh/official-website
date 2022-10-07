@@ -1,0 +1,23 @@
+doctype html
+html(lang="zh-Hant")
+
+    // Include Common Head
+    include common/_head
+
+    // Main
+    body
+        include ./common/_header
+
+        main
+            #content.content
+                // Moto Main
+                include ./moto/_motoContainer
+
+                // Entry Link
+                include ./common/_entry
+
+        #cover__menu.cover__menu
+
+        include common/_footer
+
+        include common/_script

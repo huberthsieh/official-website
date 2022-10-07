@@ -1,0 +1,74 @@
+header#header
+    .header__inner
+        h1.logo
+            a.img(href='index.html')
+                //- span.hide-text 熊蓋厚貸
+
+            p
+                span.txt
+                    span.tw.slide-in-bottom
+                        | 熊蓋厚貸
+                    span.en.slide-in-top
+                        | OFFICIAL SITE
+        .nav_wrap
+            nav.pc_menu
+                ul.pc_menu__inner
+
+                    mixin item(href, tw, en)
+                        li.pc_menu__item
+                            a(href=href)
+                                span.txt
+                                    span.tw.slide-in-bottom
+                                        | #{ tw }
+                                    span.en.slide-in-top(data-delay="1")
+                                        | #{ en }
+
+                    +item('moto.html', '專屬機車貸款', 'Motorcycle Loans')
+                    +item('car.html', '專屬汽車貸款', 'Car Loans')
+                    +item('house.html', '專屬二胎貸款', 'Second Rank Mortgage')
+                    +item('article.html', '文章專欄', 'Articles Column')
+
+            #menu__wrap.menu__wrap
+                .menu__trigger
+                    .bar
+                        span
+                        span
+
+    #modal.modal
+        #modal__inner.modal__inner
+            .modal__top
+                ul.modal__link
+
+                    mixin item(href, tw, en)
+                        - href = href || 'javascript:void(0);'
+                        li.modal__item
+                            a(href=href)
+                                span.txt
+                                    span.tw
+                                        | #{ tw }
+                                    span.en
+                                        | #{ en }
+
+                    +item('moto.html', '專屬機車貸款', 'Motorcycle Loans')
+                    +item('car.html', '專屬汽車貸款', 'Car Loans')
+                    +item('house.html', '專屬二胎貸款', 'Second Rank Mortgage')
+                    +item('contact.html', '聯絡我們', 'Our Advantages')
+                    +item('article.html', '文章專欄', 'Article Column')
+                    +item('coming.html', '招募訊息', 'Recruit Information')
+                    +item('faq.html', '常見問題', 'Frequently Asked Question')
+                    +item('team.html;', '熊蓋團隊', 'Our Team')
+
+
+            .modal__bottom
+                .logo__wrap
+                    .img
+                    //-
+                        p.txt
+                            span.txt__inner
+                                | OFFICIAL SITE
+
+                .desc__wrap
+                    a(href='privacy.html') Privacy Policy
+                    p.footer__copy
+                        small
+                            | © 和鑫企劃有限公司

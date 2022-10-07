@@ -1,0 +1,20 @@
+include ../components/organisms/_jarallaxBackground
+include ../index/_sectionService
+include ../moto/_compareTable
+include ../common/_stepList
+
+.moto__container
+    //- Banner
+    +jarallaxBackground('../assets/images/article.jpg')
+
+    //- 機車貸款服務
+    +service(
+        "熊蓋機車貸款",
+        "優質服務、熱門推薦"
+    )
+
+    //- 比較表格
+    +compareTable
+
+    //- 申請步驟
+    +stepList

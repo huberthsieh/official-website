@@ -1,0 +1,73 @@
+include ../components/organisms/_accordion
+include ../components/organisms/_jarallaxImage
+
+section.section.faq.mt-200
+    .section__inner.pt-200.pb-200.m-auto.before-effect.scroll__animation(
+        data-os-animation="slide-in-right"
+        data-os-animation-delay="0"
+        data-os-animation-Frequency="once"
+    )
+        .txt
+            h3.txt__title
+                span.en.color-white.d-block.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-bottom"
+                    data-os-animation-delay="0s"
+                    data-os-animation-Frequency="once"
+                ) 07. 相關疑惑、注意事項
+
+                span.tw.color-white.d-block.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-bottom"
+                    data-os-animation-delay=".4s"
+                    data-os-animation-Frequency="once"
+                ) 貸款常見問題
+
+            // 首頁FAQ標題大概16個字
+            .accordion
+                +accordionItem(
+                    '0.8s',
+                    '熊蓋厚貸是否合法，撥款來源為何？',
+                    '【熊蓋厚貸】與新鑫、和潤、中租三大上市融資公司合作，並且由專業律師背書，絕對合法安全。'
+                )
+
+                +accordionItem(
+                    '1.2s',
+                    '和熊蓋貸款申請流程？',
+                    `
+                        1. 線上申請：可線上申請或留下資料讓專屬顧問為您評估，依照信用及工作狀況送最合適的專案。<br>
+                        2. 審核回覆：順利核貸後會第一時間通知，並幫您預約對保。 <br>
+                        3. 現場對保：再次確認申請金額，並親簽申請書及貸款合約。 <br>
+                        4. 撥款方式：款項直接撥入您指定的帳戶！
+                    `
+                )
+
+                +accordionItem(
+                    '1.6s',
+                    '信用不好可以辦嗎？',
+                    '每個人的情況不同，我們需要了解您的詳細狀況才能做評估，如果是不嚴重的信用狀況，還是可以放心辦理汽車貸款。'
+                )
+
+                +accordionItem(
+                    '2s',
+                    '貸款的還款方式？',
+                    '繳款時間是撥款當日滿一個月後為繳款日，劃撥單會在撥款後7日內以掛號方式郵寄到您通訊地址，您可以拿劃撥單到全省超商或著郵局以及繳款，也可以憑劃撥單上所列屬於帳號使用ATM或是ATM轉帳繳款即可，不論您用哪種方式付款，請保留收據以便日後對帳。'
+                )
+
+
+            .button__wrap.opacity-0.scroll__animation(
+                data-os-animation="slide-in-bottom"
+                data-os-animation-delay="2s"
+                data-os-animation-Frequency="once"
+            )
+                a.button(href='contact.html' data-color="black")
+                    span.text Read more
+                    span.arrow
+
+    .img_dec(data-place="top").scroll__animation(
+        data-os-animation="slide-in-right"
+        data-os-animation-delay="0"
+        data-os-animation-Frequency="once"
+    )
+        +jarallaxImage(
+            "../assets/images/faq.jpg",
+            "faq"
+        )

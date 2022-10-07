@@ -1,0 +1,21 @@
+include ../components/organisms/_jarallaxBackground
+include ../components/organisms/_accordion
+include ../components/section/_introduction
+include ../components/section/_team
+
+.team__container
+
+    //- Banner
+    +jarallaxBackground('../assets/images/team.jpg')
+
+    //- Introduction
+    +introduction(
+        "關於熊蓋厚貸",
+        "專業貸款唯一指定品牌",
+        "三大融資 (中租/和潤/裕融) 特約經銷商，有多年專業貸款申辦經驗，經手上萬件機車貸款、汽車貸款及房屋二胎案件，致力協助客戶爭取最好的方案，客製化服務，核准率最高，全程最放心！",
+        "https://images.pexels.com/photos/6266641/pexels-photo-6266641.jpeg"
+    )
+
+    //- Team
+    +team()
+

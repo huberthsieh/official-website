@@ -1,0 +1,59 @@
+include ../components/organisms/_accordion
+
+.faq__container
+    .faq__container__inner.after-block.scroll__animation(
+        data-os-animation="block-in"
+        data-os-animation-delay="0s"
+        data-os-animation-Frequency="once"
+    )
+        .faq__title
+            .txt
+                h3.txt__title
+                    span.en.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay="0s"
+                        data-os-animation-Frequency="once"
+                    ) Frequently Asked Question
+
+                    span.tw.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay=".4s"
+                        data-os-animation-Frequency="once"
+                    ) 貸款常見問題
+
+        .accordion
+            +accordionItem(
+                '0.8s',
+                '熊蓋厚貸是否合法，撥款來源為何？',
+                '【熊蓋厚貸】與新鑫、和潤、中租三大上市融資公司合作，並且由專業律師背書，絕對合法安全。',
+                'black'
+            )
+            +accordionItem(
+                '1.2s',
+                '和熊蓋貸款申請流程？',
+                `
+                    1. 線上申請：可線上申請或留下資料讓專屬顧問為您評估，依照信用及工作狀況送最合適的專案。<br>
+                    2. 審核回覆：順利核貸後會第一時間通知，並幫您預約對保。 <br>
+                    3. 現場對保：再次確認申請金額，並親簽申請書及貸款合約。 <br>
+                    4. 撥款方式：款項直接撥入您指定的帳戶！
+                `,
+                'black'
+            )
+            +accordionItem(
+                '1.6s',
+                '信用不好可以辦嗎？',
+                '每個人的情況不同，我們需要了解您的詳細狀況才能做評估，如果是不嚴重的信用狀況，還是可以放心辦理汽車貸款。',
+                'black'
+            )
+            +accordionItem(
+                '2s',
+                '貸款的還款方式？',
+                '繳款時間是撥款當日滿一個月後為繳款日，劃撥單會在撥款後7日內以掛號方式郵寄到您通訊地址，您可以拿劃撥單到全省超商或著郵局以及繳款，也可以憑劃撥單上所列屬於帳號使用ATM或是ATM轉帳繳款即可，不論您用哪種方式付款，請保留收據以便日後對帳。',
+                'black'
+            )
+            +accordionItem(
+                '2.4s',
+                '信用不好可以辦嗎？',
+                '每個人的情況不同，我們需要了解您的詳細狀況才能做評估，如果是不嚴重的信用狀況，還是可以放心辦理貸款，我們的專員會盡力幫您找出最適合的方案。',
+                'black'
+            )

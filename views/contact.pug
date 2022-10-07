@@ -1,0 +1,27 @@
+include ./index/_sectionBanner
+
+doctype html
+html(lang="zh-Hant")
+
+    // Include Common Head
+    include common/_head
+
+    // Main
+    body
+        include ./common/_header
+
+        main
+            #content.content
+                // Banner
+                +sectionBanner('https://youtu.be/Qsty8y7OtUI')
+
+                include contact/_sectionContact
+
+                // Entry Link
+                include ./common/_entry
+
+        #cover__menu.cover__menu
+
+        include common/_footer
+
+        include common/_script

@@ -1,0 +1,72 @@
+mixin team
+    section.section.team.pt-200.mb-300
+        ul.d-flex.sales__list
+            mixin li(src, delay)
+                li.sales__item.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-right"
+                    data-os-animation-delay="0"
+                    data-os-animation-Frequency="once"
+                )
+                    img(
+                        src= src,
+                        alt="sales"
+                    )
+
+            +li(
+                "https://images.pexels.com/photos/5717630/pexels-photo-5717630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "0"
+            )
+
+            +li(
+                "https://images.pexels.com/photos/5915204/pexels-photo-5915204.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "0.4s"
+            )
+
+            +li(
+                "https://images.pexels.com/photos/4132307/pexels-photo-4132307.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "0.8s"
+            )
+
+            +li(
+                "https://images.pexels.com/photos/8145331/pexels-photo-8145331.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "1.2s"
+            )
+
+
+        .section__inner.d-flex.pt-100.pb-100.m-auto.minus-mt-100.before-block.after-block.scroll__animation(
+            data-os-animation="block-in"
+            data-os-animation-delay="0s"
+            data-os-animation-Frequency="once"
+        )
+            .txt
+                h3.txt__title
+                    span.en.color-main.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay="0s"
+                        data-os-animation-Frequency="once"
+                    ) 05. 專業理財諮詢團隊
+                    span.tw.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay=".4s"
+                        data-os-animation-Frequency="once"
+                    ) 熊蓋厚貸團隊
+
+            .txt
+                p.desc.font-weight-300.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-bottom"
+                    data-os-animation-delay=".4s"
+                    data-os-animation-Frequency="once"
+                )
+                    | 深世臺時人力信始小主毒家中？令神及在重。電不遊眾，的安館回明理子致義。
+                    | 銷再小就不片後……選基金異比一所。兒春管中做相火是出，難果車主義南夜，
+                    | 點賽感性早們有物電經月本麼教年其意制查對古國利之力親。片何走高萬施角體求，
+                    | 作亞加營聞，果那失會不最地的確也政。
+
+                .button_wrap.d-flex.justify-end.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-bottom"
+                    data-os-animation-delay=".8s"
+                    data-os-animation-Frequency="once"
+                )
+                    a.button(href='javascript:void(0);' data-color="main")
+                        span.text Read more
+                        span.arrow

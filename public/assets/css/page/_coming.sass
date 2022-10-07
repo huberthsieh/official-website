@@ -1,0 +1,26 @@
+.coming__container
+    position: relative
+
+    & ~ .entry__link.entry__link
+        margin-top: 0
+
+    &:before
+        content: ""
+        +size(100%, 100%)
+        position: absolute
+        left: 0
+        top: 0
+        background-color: rgba(black, .2)
+        backdrop-filter: blur(10px)
+        z-index: 1
+
+    h2
+        position: absolute
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        z-index: 1
+        color: white
+        font-size: 72px
+        line-height: 2
+        letter-spacing: 2px

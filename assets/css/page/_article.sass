@@ -1,0 +1,94 @@
+.article
+    &__container
+
+        .section__banner
+            position: relative
+
+            &:before
+                content: ""
+                +size(100%, 100%)
+                position: absolute
+                left: 0
+                top: 0
+                background-color: rgba(black, .2)
+                backdrop-filter: blur(10px)
+                z-index: 1
+
+            h2
+                position: absolute
+                left: 50%
+                top: 50%
+                transform: translate(-50%, -50%)
+                z-index: 1
+                color: white
+                font-size: 72px
+                line-height: 2
+                letter-spacing: 2px
+
+
+        .jarallax
+            height: 600px
+            margin-top: 100px
+            +pad
+                height: 360px
+                margin-top: 60px
+
+        &__inner
+            position: relative
+            width: 100%
+            max-width: 1280px
+            margin: 0 auto
+            display: flex
+            padding-top: 20px
+
+    &__list
+        +flex(space-between, center)
+        flex-wrap: wrap
+
+        li
+            width: calc(100% / 2 - 10px)
+            padding: 5px 5px 20px
+            +pad
+                width: 100%
+                padding: 0 20px 20px 20px
+
+            &.full
+                width: 100%
+
+    &__item
+        display: block
+
+        &__inner
+            +size(100%, 100%)
+            background-color: white
+            font-size: 16px
+            line-height: 1.6em
+            overflow: hidden
+            position: relative
+            text-align: left
+            img
+                width: 100%
+
+        &__txt
+            padding: 20px 0 0
+
+    &__category
+        position: relative
+        color: $main
+        font-size: 32px
+        font-size: 3.2rem
+        line-height: 1.5
+
+    &__title
+        font-size: 22px
+        font-size: 2.2rem
+        line-height: 1.4
+        letter-spacing: 0.1rem
+        padding: 10px 0 30px 0
+        color: $black
+
+    &__more
+        position: relative
+        display: block
+
+

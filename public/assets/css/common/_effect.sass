@@ -1,0 +1,55 @@
+.overlay_mask
+    +size(100%, 100%)
+    position: relative
+    overflow: hidden
+
+    &:before
+        content: ""
+        +size(100%, 100%)
+        pointer-events: none
+        display: block
+        position: absolute
+        top: 100%
+        left: 0
+        background-color: $main
+        z-index: 2
+        overflow: visible
+        transform-origin: left top
+        animation-name: overLay-mask
+        animation-timing-function: cubic-bezier(0.1, 0.5, 0.2, 1)
+        animation-duration: 1s
+        animation-fill-mode: forwards
+
+.delay_show
+    animation-name: fade-in
+    animation-timing-function: cubic-bezier(0.1, 0.5, 0.2, 1)
+    animation-duration: 1.6s
+    animation-delay: 1s
+    animation-fill-mode: forwards
+
+.modal-fade-in
+    animation-name: modal-fade-in
+    animation-timing-function: cubic-bezier(0.1, 0.5, 0.2, 1)
+    animation-duration: 1.6s
+    animation-fill-mode: forwards
+
+.slide-in-bottom
+    animation-name: slide-in-bottom
+    animation-timing-function: cubic-bezier(0.1, 0.5, 0.2, 1)
+    animation-duration: 1.2s
+    animation-fill-mode: forwards
+
+.slide-in-top
+    animation-name: slide-in-top
+    animation-timing-function: cubic-bezier(0.1, 0.5, 0.2, 1)
+    animation-duration: 1.2s
+    animation-fill-mode: forwards
+
+.scale-in-right
+    transform-origin: right
+    animation-name: scale-in-right
+    animation-timing-function: cubic-bezier(0.1, 0.5, 0.2, 1)
+    animation-duration: 1.2s
+    animation-fill-mode: forwards
+
+

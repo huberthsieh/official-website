@@ -1,0 +1,83 @@
+.button__wrap
+    +size(100%, 100%)
+
+.button
+    +flex(center, center)
+    position: relative
+    width: 250px
+    height: 70px
+    text-align: left
+    padding: 0 30px
+    line-height: 70px
+    z-index: 2
+    background-color: $main-light
+
+    &:before
+        content: ""
+        +size(100%, 100%)
+        background-color: $black
+        position: absolute
+        right: 0
+        bottom: 0
+        transform-origin: right top
+        transition: transform .3s
+        transform: scale(0, 1)
+
+    &:hover
+        .arrow
+            right: 25px
+
+        &:before
+            transform-origin: left top
+            transform: scale(1, 1)
+
+    &[data-color="black"]
+        background-color: $black
+
+        &:before
+            background-color: white
+
+        &:hover
+            .text
+                color: $black
+
+            .arrow
+                border-left-color: $black
+                right: 25px
+
+            .arrow:before
+                background-color: $black
+
+            &:before
+                transform-origin: left top
+                transform: scale(1, 1)
+
+    &[data-color="white"]
+        background-color: white
+
+        .text
+            color: $black
+
+        .arrow
+            border-left-color: $black
+
+        .arrow:before
+            background-color: $black
+
+        &:before
+            background-color: $main-light
+
+        &:hover
+            .text
+                color: white
+
+            .arrow
+                border-left-color: white
+                right: 25px
+
+            .arrow:before
+                background-color: white
+
+            &:before
+                transform-origin: left top
+                transform: scale(1, 1)

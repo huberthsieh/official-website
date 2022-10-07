@@ -1,0 +1,49 @@
+mixin compareTable
+    .compare__wrapper.opacity-0.scroll__animation(
+        data-os-animation="slide-in-bottom"
+        data-os-animation-delay="0.8s"
+        data-os-animation-Frequency="once"
+        aria-label="Meeting rooms"
+    )
+
+        .compare__table
+            .compare__header.compare__grid.compare--stick-x
+                .compare__cell.compare__cell--spacer.compare__cell--sticky
+
+                .compare__cell.compare--brand
+                    p.compare__text.compare--caption 熊蓋厚貸
+
+                .compare__cell.compare--brand
+                    p.compare__text.compare--caption 銀行
+
+                .compare__cell.compare--brand
+                    p.compare__text.compare--caption 代辦公司
+
+
+            .compare__body
+                mixin grid(header, bear, bank, other)
+                    .compare__grid
+                        .compare__cell.compare__cell--header.compare__cell--sticky.compare__cell--full
+                            p.compare__text.compare--caption.text-center
+                                | #{ header }
+
+                        .compare__cell(aria-label="熊蓋")
+                            p.compare__text.compare--label.compare--bear
+                                | #{ bear }
+
+                        .compare__cell(aria-label="銀行")
+                            p.compare__text.compare--label
+                                | #{ bank }
+
+                        .compare__cell.compare__cell--full(aria-label="代辦公司")
+                            p.compare__text.compare--label
+                                | #{ other }
+
+
+                +grid("優點", "速度快以及三大上市公司掛保證", "利率較低", "視貸款公司規定")
+                +grid("缺點", "利率較銀行高一點", "審核較嚴格", "會另外收取服務費用")
+                +grid("貸款利率", "依造個人條件評估，最高不超過12%", "利率較低", "利率較高")
+                +grid("還款期數", "測試文字，測試文字測試文字測試文字測試文字測試文字測試文字", "利率較低", "利率較高")
+                +grid("貸款額度", "依造個人條件評估，最高不超過12%", "利率較低", "利率較高")
+                +grid("相關費用", "沒有額外收費", "沒有額外收費", "額外收取10 ~ 15%費用")
+                +grid("抵押車子", "免留車", "免留車", "通常需要")

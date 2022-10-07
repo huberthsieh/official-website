@@ -1,0 +1,74 @@
+include ../components/organisms/_jarallaxBackground
+include ../components/section/_background
+include ../components/section/_introduction
+include ../components/section/_contact
+include ../index/_sectionService
+include ../moto/_compareTable
+include ../common/_stepList
+
+include ../components/organisms/_jarallaxImage
+
+.car__container
+
+    //- Banner
+    +jarallaxBackground('../assets/images/car01.jpg')
+
+    section.section.car
+        .section__inner.pt-200.pb-200.m-auto.minus-mt-100.before-effect.scroll__animation(
+            data-os-animation="slide-in-left"
+            data-os-animation-delay="0"
+            data-os-animation-Frequency="once"
+        )
+            .txt
+                h3.txt__title
+                    span.en.color-main.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay=".4s"
+                        data-os-animation-Frequency="once"
+                    ) 優質服務、熱門推薦
+
+                    span.tw.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay=".4s"
+                        data-os-animation-Frequency="once"
+                    ) 熊蓋汽車貸款
+
+                p.desc.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-bottom"
+                    data-os-animation-delay=".8s"
+                    data-os-animation-Frequency="once"
+                ) 告代程營以法化！工身也市來時路家兩我來飛視統。 千日步！人來一線象去年如麼和應小四容保心們大處會小，結愛要士，的趣的一我極成活怕式法的場我用笑行外正業中相三馬早統時由這？了那地可病總銀去港清服流。營二石子題德事配女，中害公以、水上意容大史回的物新在裡集意法是究半廣破，年衣破；學表東勢縣幾接。半仍議整主言傳，頭走一談護回，眾音立得計面界了作集想員息過班生理理子上新相……友學題走學石學術的少風車加男遠家資一起最能代華且發或表方今大整時起港病把能如花氣、展有樣戰的許文動理種字如電人國委義的因各落世節母面少得報痛多個老大有。 深多己縣長一國長常，費遠港當種基日見型，為個飯人有果生白這驗那頭們，選以後康新再而禮美香決教團中，漸最德會入裡式、後落是人星己止持地業定新業頭黨裡精望日新麼。
+
+                .button__wrap.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-bottom"
+                    data-os-animation-delay="1.2s"
+                    data-os-animation-Frequency="once"
+                )
+                    a.button(href='contact.html' data-color="black")
+                        span.text Read more
+                        span.arrow
+
+        //.img_dec(data-place="bottom").scroll__animation(
+        //    data-os-animation="slide-in-right",
+        //    data-os-animation-delay="0",
+        //    data-os-animation-Frequency="once"
+        //)
+        //    +jarallaxImage(
+        //        "https://images.pexels.com/photos/6266641/pexels-photo-6266641.jpeg",
+        //        "introduction",
+        //    )
+
+    +background()
+
+    +introduction(
+        "汽車貸款優勢",
+        "業界最快、成數最高",
+        "三大融資 (中租/和潤/裕融) 特約經銷商，有多年專業貸款申辦經驗，經手上萬件機車貸款、汽車貸款及房屋二胎案件，致力協助客戶爭取最好的方案，客製化服務，核准率最高，全程最放心！",
+        "https://images.pexels.com/photos/12088447/pexels-photo-12088447.jpeg"
+    )
+
+    //- 申請步驟
+    +stepList(class="pt-200")
+
+    //- 聯絡我們
+    +contact

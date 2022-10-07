@@ -1,0 +1,47 @@
+// Style Base
+@mixin flex($justify:flex-start, $align:flex-start)
+    display: flex
+    justify-content: $justify
+    align-items: $align
+
+@mixin position($type:absolute, $top:0, $right:0, $bottom:0, $left:0)
+    position: $type
+    top: $top
+    right: $right
+    bottom: $bottom
+    left: $left
+
+@mixin size($w:auto, $h:auto)
+    width: $w
+    height: $h
+
+@mixin padding($place, $value)
+    #{padding-$place}: $value
+
+
+// Media Query
+@mixin rwdw($width)
+    @media (max-width: $width)
+        @content
+
+@mixin small
+    @media (max-width: 574px)
+        @content
+
+@mixin mobile
+    @media (max-width: 767px)
+        @content
+
+@mixin tablet
+    @media (max-width: 991px)
+        @content
+
+@mixin pad
+    @media (max-width: 1023px)
+        @content
+
+@mixin desktop
+    @media (min-width: 1024px)
+        @content
+
+

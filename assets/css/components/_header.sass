@@ -1,0 +1,357 @@
+#header
+    +size(100%, 100px)
+    margin: 0
+    padding: 0
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 1000
+    transition: all .3s
+
+    +pad
+        height: 60px
+
+    &.open
+        .menu__trigger
+
+            &:before
+                opacity: 0
+
+            &:after
+                opacity: 1
+
+            .bar
+                span:nth-of-type(1)
+                    transform: translateY(5px) rotate(-35deg)
+
+                span:nth-of-type(2)
+                    transform: translateY(-5px) rotate(35deg)
+
+    .header__inner
+        +flex(space-between)
+        +size(100%, 100%)
+        background-color: $main
+        color: white
+        position: relative
+        z-index: 10
+        transition: background-color .3s
+        +pad
+            background-color: $main-light
+
+        .txt
+            .tw, .en
+                opacity: 0
+
+    .logo
+        +flex()
+        +size(310px, 100%)
+        background-color: $main-light
+
+        p
+            +flex(center, center)
+            +size(210px, 100%)
+            +pad
+                width: 140px
+
+    .txt
+        display: inline-block
+        line-height: 1.5
+
+        .tw, .en
+            display: block
+            position: relative
+
+        .tw
+            font-size: 1.6rem
+            font-weight: 500
+
+        .en
+            font-size: 1.2rem
+            font-weight: 700
+
+    .nav_wrap
+        +flex()
+        +size(calc(100% - 310px), 100%)
+
+        +pad
+            width: auto
+
+
+    .pc_menu
+        +size(calc(100% - 160px), 100%)
+        +pad
+            display: none
+
+        &__inner
+            +flex()
+            +size(100%, 100%)
+
+        &__item
+            +size(25%, 100%)
+
+            &:first-child
+                a:before
+                    content: none
+
+            a
+                +flex(center, center)
+                +size(100%, 100%)
+                position: relative
+                transition: all .4s
+
+                &:hover
+                    background-color: #FFF
+                    color: $black
+
+                &:before
+                    content: ''
+                    display: block
+                    width: 1px
+                    height: 44px
+                    background-color: rgba(255,255,255,.2)
+                    position: absolute
+                    left: 0
+                    top: 50%
+                    transform: translateY(-50%)
+
+    .menu__wrap
+        +size(160px, 100%)
+        +flex(center, center)
+        background-color: $main-heavy
+        +pad
+            width: 105px
+
+
+    .menu__trigger
+        display: block
+        +size(85px, 14px)
+        position: relative
+        cursor: pointer
+
+        &:before, &:after
+            position: absolute
+            left: 0
+            top: 0
+            transition: all .4s
+            display: block
+            line-height: 14px
+            letter-spacing: .05em
+            color: #fff
+
+        &:before
+            content: 'MENU'
+            +size(50px, 14px)
+            font-size: 1.2rem
+            opacity: 1
+
+        &:after
+            content: 'CLOSE'
+            font-size: 1.2rem
+            opacity: 0
+
+        .bar
+            display: block
+            width: 32px
+            height: 12px
+            position: relative
+            margin-left: 51px
+
+            span
+                +size(100%, 2px)
+                display: block
+                transition: all .4s
+                position: absolute
+                left: 0
+                background-color: #fff
+
+                &:first-child
+                    top: 0
+
+                &:last-child
+                    bottom: 0
+
+
+#header .logo .img
+    display: block
+    +size(100px, 100%)
+    background-color: #fff
+    background-position: center center
+    background-repeat: no-repeat
+    background-size: 90px 90px
+    background-image: url("../images/logo.svg")
+
+
+.modal
+    +size(100%, 100vh)
+    position: fixed
+    top: 0
+    left: 0
+    padding-top: 100px
+    transform-origin: top
+    opacity: 0
+    z-index: 11
+    pointer-events: none
+    transition: opacity .4s
+    +mobile
+        padding-top: 80px
+
+    &.open
+        opacity: 1
+        display: block
+
+    &__inner
+        width: 100%
+        max-width: 1080px
+        margin: 0 auto
+        height: 100%
+        padding: 0 20px
+        position: relative
+        pointer-events: none
+        z-index: 11
+        opacity: 0
+        transition: opacity .4s
+
+        &.open
+            animation: modal-fade-in .5s ease-in-out .6s 1 normal both running
+            pointer-events: auto
+
+        &.close
+            animation: modal-fade-out .5s ease-in-out .6s 1 normal both running
+            pointer-events: none
+
+    &__top
+        width: 100%
+        height: calc(100% - 160px)
+        display: flex
+        -ms-flex-pack: center
+        justify-content: center
+        -webkit-box-align: center
+        -ms-flex-align: center
+        align-items: center
+        +mobile
+            height: auto
+            padding-bottom: 20px
+        
+    &__link
+        width: 100%
+        margin: 0 auto
+        display: flex
+        flex-wrap: wrap
+        justify-content: flex-start
+
+    &__item
+        width: 33.333333%
+        padding: 30px 0
+        opacity: 1
+        transition: opacity .8s
+        +mobile
+            width: 50%
+            padding: 15px 0
+
+        a
+            display: block
+            transition: opacity .8s
+            opacity: 1
+            &:hover
+                opacity: .4
+
+        .txt
+            display: inline-block
+            text-align: left
+
+        .tw
+            display: block
+            color: #fff
+            font-size: 24px
+            font-size: 2.4rem
+            letter-spacing: .1em
+            line-height: 1
+            margin-bottom: 12px
+
+        .en
+            color: #fff
+            display: block
+            font-size: 14px
+            font-size: 1.4rem
+            letter-spacing: .04em
+            line-height: 1
+            opacity: .5
+                
+    &__bottom
+        border-top: 1px solid rgba(255,255,255,.5)
+        +size(100%, 160px)
+        display: flex
+        justify-content: space-between
+        align-items: center
+        opacity: 1
+        transition: opacity .8s
+        +mobile
+            display: block
+            height: auto
+        
+        .logo__wrap
+            width: 200px
+            display: flex
+            justify-content: space-between
+            align-items: center
+            +mobile
+                display: block
+                width: 100%
+
+            .img
+                display: block
+                +size(120px, 70px)
+                background-position: center center
+                background-repeat: no-repeat
+                background-size: contain
+                background-image: url("../images/logo-white.svg")
+                +mobile
+                    margin: 20px auto
+
+            .txt
+                &__inner
+                    color: white
+
+        .desc__wrap
+            display: flex
+            color: white
+            +mobile
+                justify-content: space-between
+
+        .footer__copy
+            margin-left: 10px
+
+
+.cover__menu
+    display: block
+    position: fixed
+    left: 0
+    bottom: 0
+    width: 100%
+    z-index: 2
+    pointer-events: none
+    height: 0
+    overflow: hidden
+    visibility: hidden
+
+    &.open
+        visibility: visible
+        animation: cover-menu-in .5s ease-in-out 0s 1 normal both running
+
+    &.close
+        animation: cover-menu-out .5s ease-in-out .5s 1 normal both running
+
+    &:before, &:after
+        content: ""
+        width: 100%
+        display: block
+
+    &:before
+        background-image: linear-gradient(180deg, rgba(0,200,200,0), $main)
+        height: 320px
+
+    &:after
+        height: calc(100vh + 320px)
+        background-color: $main
+
+

@@ -1,0 +1,121 @@
+mixin contact
+
+    section.section.contact
+        .section__inner.d-flex.pt-100.pb-100.m-auto.minus-mt-100.before-block.after-block.scroll__animation(
+            data-os-animation="block-in"
+            data-os-animation-delay="0s"
+            data-os-animation-Frequency="once"
+        )
+            .txt
+                h3.txt__title
+                    span.en.color-main.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay="0s"
+                        data-os-animation-Frequency="once"
+                    ) Contact Us
+
+                    span.tw.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay=".4s"
+                        data-os-animation-Frequency="once"
+                    ) 聯絡我們
+
+                .txt__content
+                    span.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay=".8s"
+                        data-os-animation-Frequency="once"
+                    ) 04 3705 3773
+
+                    span.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay="1.2s"
+                        data-os-animation-Frequency="once"
+                    ) 週一 ~ 週五 09:00 ~17:30
+
+                    span.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay="1.6s"
+                        data-os-animation-Frequency="once"
+                    ) bearloantw@gmail.com
+
+                    span.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay="2s"
+                        data-os-animation-Frequency="once"
+                    ) 台中市西區大忠里忠明南路270號12樓之1
+
+            .form__container
+                form(id="form" class="form" method="post" action="your_url" novalidate="novalidate")
+
+                    mixin fieldset(delay, text, id, name, type, placeholder, div)
+                        - var textarea = div === 'textarea'
+                        - var button = div === 'button'
+
+                        fieldset.opacity-0.scroll__animation(
+                            data-os-animation="slide-in-bottom"
+                            data-os-animation-delay=delay
+                            data-os-animation-Frequency="once"
+                        )
+                            if textarea
+                                .input__title
+                                    span.input--required ※
+                                    | #{ text }
+                                textarea(placeholder=placeholder maxlength="500")
+                            else if button
+                                .button__wrap
+                                    button.button(type=type data-color="main")
+                                        span.text=text
+                                        span.arrow
+                            else
+                                .input__title
+                                    span.input--required ※
+                                    | #{ text }
+                                input(id=id name=name type=type placeholder=placeholder required aria-required="true")
+
+                    +fieldset(
+                        "0",
+                        "請留下您的姓名",
+                        "customer-name",
+                        "customer-name",
+                        "text",
+                        "請輸入姓名"
+                    )
+
+                    +fieldset(
+                        "0.4s",
+                        "請留下您的電話",
+                        "customer-phone",
+                        "customer-phone",
+                        "tel",
+                        "請輸入電話號碼"
+                    )
+
+                    +fieldset(
+                        "0.8s",
+                        "請留下您的Line ID",
+                        "customer-line",
+                        "customer-line",
+                        "email",
+                        "請輸入Line ID"
+                    )
+
+                    +fieldset(
+                        "1.2s",
+                        "請留下您的訊息",
+                        "customer-line",
+                        "customer-line",
+                        "email",
+                        "請寫下您的需求，我們會盡快和您聯繫",
+                        "textarea"
+                    )
+
+                    +fieldset(
+                        "1.6s",
+                        "送出",
+                        "customer-submit",
+                        "customer-submit",
+                        "submit",
+                        "",
+                        "button"
+                    )

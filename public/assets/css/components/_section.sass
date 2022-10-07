@@ -1,0 +1,100 @@
+.section
+    +size(100%, auto)
+    position: relative
+
+    &.car, &.house
+        .section__inner
+            +pad
+                padding-top: 100px
+                padding-bottom: 100px
+
+            .txt.txt
+                +pad
+                    padding: 60px 20px
+
+    &__inner
+        +size(100%, 100%)
+        max-width: 1040px
+        position: relative
+        z-index: 1
+
+        &.before-effect
+            &:before
+                content: ""
+                +size(200%, 100%)
+                position: absolute
+                right: 130px
+                top: 0
+                background-color: $main-light
+                transition: transform .4s cubic-bezier(.41,.05,.94,.65)
+                transform-origin: right
+                transform: scaleX(0)
+
+        &.before-effect[data-os-animation=slide-in-left]
+            .txt
+                background-color: white
+                width: calc(100% - 120px)
+                max-width: 100%
+                padding: 100px 30px
+                +pad
+                    width: 100%
+
+            & ~ .img_dec
+                bottom: -300px
+
+            &:before
+                right: auto
+                left: 130px
+                transform-origin: left
+
+        &.slide-in-right, &.slide-in-left
+            &:before
+                transform: scaleX(1)
+
+        .txt
+            position: relative
+            z-index: 10
+            width: 48%
+            max-width: 430px
+            +pad
+                margin-bottom: 35px
+
+            &__title
+                margin-bottom: 55px
+                margin-left: -2px
+                position: relative
+                +pad
+                    margin-bottom: 35px
+
+            .en
+                font-size: 14px
+                font-size: 1.4rem
+                line-height: 1
+                letter-spacing: .04em
+                margin-bottom: 20px
+                padding-left: 2px
+                +mobile
+                    font-size: 13px
+                    font-size: 1.3rem
+
+            .tw
+                font-size: 40px
+                font-size: 4rem
+                line-height: 1
+                letter-spacing: .1em
+                +mobile
+                    font-size: 28px
+                    font-size: 2.8rem
+
+            .desc
+                width: 100%
+                font-size: 15px
+                font-size: 1.5rem
+                line-height: 2
+                letter-spacing: .06em
+                margin-bottom: 50px
+
+    .img_group
+        position: relative
+        width: 50%
+        margin-left: -100px

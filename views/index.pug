@@ -1,0 +1,65 @@
+include ./index/_sectionBanner
+include ./index/_sectionService
+include components/section/_introduction
+include components/section/_team
+include components/section/_background
+
+doctype html
+html(lang="zh-Hant")
+
+    // Include Common Head
+    include common/_head
+
+    // Main
+    body
+        include ./common/_header
+
+        main
+            #content.content
+
+                // Banner
+                +sectionBanner("https://youtu.be/w-wnanr0CxQ")
+
+                // Introduction
+                +introduction(
+                    "關於熊蓋厚貸",
+                    "01. 專業貸款、唯一品牌",
+                    "三大融資 (中租/和潤/裕融) 特約經銷商，有多年專業貸款申辦經驗，經手上萬件機車貸款、汽車貸款及房屋二胎案件，致力協助客戶爭取最好的方案，客製化服務，核准率最高，全程最放心！",
+                    "https://images.pexels.com/photos/6266641/pexels-photo-6266641.jpeg"
+                )
+
+                // Advantage
+                include ./index/_sectionAdvantage
+
+                // Background
+                +background()
+
+                // Service
+                +service(
+                    "熊蓋優質服務",
+                    "03. 優質服務、熱門推薦"
+                )
+
+                // Warn
+                include ./index/_sectionWarn
+
+                // Team
+                +team()
+
+                // Lawyer
+                include ./index/_sectionLawyer
+
+                // Legalization
+                include ./index/_sectionLegalization
+
+                // Faq
+                include ./index/_sectionFaq
+
+                // Entry Link
+                include ./common/_entry
+
+        #cover__menu.cover__menu
+
+        include common/_footer
+
+        include common/_script

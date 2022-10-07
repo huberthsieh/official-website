@@ -1,0 +1,106 @@
+.accordion
+    &__title
+        font-size: 18px
+        font-size: 1.8rem
+        color: white
+
+        &[data-color=black]
+            color: $black
+
+        &[data-color=main]
+            color: $main
+
+        +small
+            font-size: 16px
+            font-size: 1.6rem
+
+    &__item
+        margin-bottom: 20px
+        color: white
+
+        &[data-color=black]
+            color: $black
+
+            button[aria-expanded='true']
+                border-color: $black
+
+        &[data-color=main]
+            color: $main
+
+            button[aria-expanded='true']
+                border-color: $main
+
+        &:last-child
+            margin-bottom: 50px
+
+    &__content
+        opacity: 0
+        max-height: 0
+        overflow: hidden
+        transition: opacity .3s linear, max-height .3s linear, padding .3s linear
+        line-height: 1.5
+        border-bottom: 1px solid $gray
+
+        p
+            font-size: 15px
+            font-size: 1.5rem
+            +small
+                font-size: 14px
+                font-size: 1.4rem
+
+    button
+        position: relative
+        display: block
+        width: 100%
+        padding: 1rem 0
+        border-bottom: 1px solid $gray
+
+        &[aria-expanded='true']
+            border-color: white
+
+            + .accordion__content
+                opacity: 1
+                max-height: 20rem
+                padding: 1rem 0
+
+            .icon
+                &::after
+                    width: 0
+
+    .icon
+        display: inline-block
+        position: absolute
+        right: 0
+        top: 50%
+        transform: translateY(-50%)
+        +size(22px, 22px)
+        border: 1px solid white
+        border-radius: 22px
+
+        &[data-color=black]
+            border-color: $black
+            &:before, &:after
+                background: $black
+
+        &[data-color=main]
+            border-color: $main
+            &:before, &:after
+                background: $main
+
+        &:before, &:after
+            display: block
+            position: absolute
+            content: ''
+            background: white
+
+        &::before
+            top: 9px
+            left: 5px
+            width: 10px
+            height: 2px
+
+        &::after
+            top: 5px
+            left: 9px
+            width: 2px
+            height: 10px

@@ -1,0 +1,16 @@
+mixin accordionItem(delay, title, content, color)
+    -delay = delay || '0s'
+    -color = color || ''
+    .accordion__item.opacity-0.scroll__animation(
+        data-os-animation="slide-in-bottom"
+        data-os-animation-delay=delay
+        data-os-animation-Frequency="once"
+        data-color=color
+    )
+        button(aria-expanded='false' type="button")
+            span.accordion__title(data-color=color) #{ title }
+            span.icon(aria-hidden='true' data-color=color)
+
+        .accordion__content
+            p
+                | !{ content }

@@ -1,0 +1,61 @@
+mixin service(title, subtitle)
+    section.section.service.mt-200.pb-200
+        .section__inner.d-flex.justify-between.m-auto
+            .img_group
+                .img_background.scroll__animation(
+                    data-os-animation="scale-in-right"
+                    data-os-animation-delay="0"
+                    data-os-animation-Frequency="once"
+                )
+
+                // w350 * h480
+                .img.img__service.img__service--top.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-bottom"
+                    data-os-animation-delay="0.8s"
+                    data-os-animation-Frequency="once"
+                )
+                    .img__inner(style="background-image: url('./assets/images/service02s.jpg');")
+
+                // w350 * h480
+                .img.img__service.img__service--bottom.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-bottom"
+                    data-os-animation-delay="1.2s"
+                    data-os-animation-Frequency="once"
+                )
+                    .img__inner(style="background-image: url('./assets/images/service04s.jpg');")
+
+            .txt
+                h3.txt__title
+                    span.en.color-main.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay=".4s"
+                        data-os-animation-Frequency="once"
+                    ) #{ subtitle }
+
+                    span.tw.color-black.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay=".8s"
+                        data-os-animation-Frequency="once"
+                    ) #{ title }
+
+
+                p.desc.color-black.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-bottom"
+                    data-os-animation-delay="1.2s"
+                    data-os-animation-Frequency="once"
+                )
+                    | 告代程營以法化！工身也市來時路家兩我來飛視統。
+                    |
+                    | 千日步！人來一線象去年如麼和應小四容保心們大處會小，結愛要士，的趣的一我極成活怕式法的場我用笑行外正業中相三馬早統時由這？了那地可病總銀去港清服流。營二石子題德事配女，中害公以、水上意容大史回的物新在裡集意法是究半廣破，年衣破；學表東勢縣幾接。半仍議整主言傳，頭走一談護回，眾音立得計面界了作集想員息過班生理理子上新相……友學題走學石學術的少風車加男遠家資一起最能代華且發或表方今大整時起港病把能如花氣、展有樣戰的許文動理種字如電人國委義的因各落世節母面少得報痛多個老大有。
+                    |
+                    | 深多己縣長一國長常，費遠港當種基日見型，為個飯人有果生白這驗那頭們，選以後康新再而禮美香決教團中，漸最德會入裡式、後落是人星己止持地業定新業頭黨裡精望日新麼。
+
+
+                .button__wrap.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-bottom"
+                    data-os-animation-delay="1.2s"
+                    data-os-animation-Frequency="once"
+                )
+                    a.button(href='contact.html' data-color="main")
+                        span.text Read more
+                        span.arrow

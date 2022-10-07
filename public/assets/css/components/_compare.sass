@@ -1,0 +1,93 @@
+.compare__wrapper
+    max-width: 1280px
+    margin: 0 auto
+    padding: 50px 0
+    +pad
+        padding: 100px 0
+
+    //&.slide-in-bottom
+    //    .compare__grid
+    //        animation-name: slide-in-bottom
+    //        animation-timing-function: cubic-bezier(0.1, 0.5, 0.2, 1)
+    //        animation-duration: 1.2s
+    //        animation-fill-mode: forwards
+    //
+    //        $max: 10
+    //        @for $i from 1 through $max
+    //            animation-delay: ($max - $i + 1)  * .4s
+
+
+.compare__table
+    width: 100%
+    max-width: calc(var(--table-column-width) * var(--table-columns-visible))
+    margin: 0 auto
+    overflow-y: scroll
+
+    --table-gap: 2.5rem 2rem
+    --table-columns: 5
+    --table-columns-visible: 4
+    --table-column-width: 320px
+
+
+.compare__cell
+    display: flex
+    flex-direction: column
+    padding: var(--table-gap)
+    border-bottom: 1px solid $gray
+
+    &--sticky
+        position: sticky
+        left: 0
+
+    &--header
+        background-color: #e0e0e0
+
+    &--spacer
+        background-color: white
+
+    &--brand
+        h2 
+            color: var(--color-dark-secondary)
+            margin: 0
+
+    &.compare--bear
+        color: $main-light
+
+.compare__header
+    background-color: white
+    position: sticky
+    top: 0
+
+
+.compare__grid
+    display: grid
+    grid-template-columns: repeat(var(--table-columns), minmax(var(--table-column-width), 1fr))
+
+
+.compare__text
+    font-size: 14px
+    font-size: 1.4rem
+    color: $black
+
+    &.compare--caption
+        font-size: 14px
+        font-size: 1.4rem
+
+
++pad
+    .compare__header, .compare__footer
+        display: none
+
+    .compare__table
+        --table-columns: 2
+        --table-column-width: auto
+
+    .compare__cell
+        &--full
+            grid-column: 1 / -1
+
+        &::before
+            content: attr(aria-label)
+            font-weight: normal
+            line-height: 2.5rem
+            color: var(--color-light-secondary)

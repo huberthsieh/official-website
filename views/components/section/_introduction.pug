@@ -1,0 +1,52 @@
+include ../organisms/_jarallaxImage
+
+mixin introduction(title, subtitle, text, src)
+    -title = title || "關於熊蓋厚貸"
+    -subtitle = subtitle || "專業貸款唯一指定品牌"
+    -text = text || ""
+    -src = src || ""
+
+    section.section.introduction.introduction--about
+        .section__inner.pt-200.pb-200.m-auto.before-effect.scroll__animation(
+            data-os-animation="slide-in-right"
+            data-os-animation-delay="0"
+            data-os-animation-Frequency="once"
+        )
+            .txt
+                h3.txt__title
+                    span.en.color-white.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay=".4s"
+                        data-os-animation-Frequency="once"
+                    ) #{ subtitle }
+
+                    span.tw.color-white.d-block.opacity-0.scroll__animation(
+                        data-os-animation="slide-in-bottom"
+                        data-os-animation-delay=".4s"
+                        data-os-animation-Frequency="once"
+                    ) #{ title }
+
+                p.desc.color-white.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-bottom"
+                    data-os-animation-delay=".8s"
+                    data-os-animation-Frequency="once"
+                ) #{ text }
+
+                .button__wrap.opacity-0.scroll__animation(
+                    data-os-animation="slide-in-bottom"
+                    data-os-animation-delay="1.2s"
+                    data-os-animation-Frequency="once"
+                )
+                    a.button(href='contact.html' data-color="black" target="_blank" rel="noreferrer noopener")
+                        span.text Read more
+                        span.arrow
+
+        .img_dec(data-place="bottom").scroll__animation(
+            data-os-animation="slide-in-right",
+            data-os-animation-delay="0",
+            data-os-animation-Frequency="once"
+        )
+            +jarallaxImage(
+                src,
+                "introduction",
+            )

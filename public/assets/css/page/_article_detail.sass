@@ -1,0 +1,86 @@
+.article
+    &__container.article__detail__container
+        .article__container__inner
+            flex-direction: column
+            margin-top: 150px
+            padding: 20px
+            background-color: white
+            +pad
+                margin-top: 80px
+
+        .article__category
+            padding: 10px
+            background-color: $main-light
+            color: white
+            max-width: 96px
+            position: relative
+            z-index: 1
+
+            &:after
+                content: ""
+                +size(38px, 100%)
+                position: absolute
+                top: 0
+                right: -38px
+                background-color: $black
+                z-index: -2
+
+            &.after-in:after
+                animation: after-in .5s ease-in-out 1 alternate both running
+                max-width: 38px
+
+        .article__title
+            padding: 20px 0 20px 0
+
+        .article__category
+            max-width: 160px
+            font-size: 22px
+            font-size: 2.2rem
+            padding: 5px 10px
+
+        //.article__date
+        //    .en, .num
+        //        display: block
+        //        border: solid 1px red
+        //        margin-bottom: 10px
+        //
+        //    .en
+        //        font-size: 24px
+        //        font-size: 2.4rem
+        //
+        //    .tw
+        //        font-size: 18px
+        //        font-size: 1.8rem
+
+    &__content
+        > *
+            padding: 10px 0
+            line-height: 1.5
+            letter-spacing: .1em
+            font-size: 16px
+            font-size: 1.6rem
+            color: $black
+
+        > h2
+            font-size: 24px
+            font-size: 2.4rem
+
+        > ol
+            list-style: auto
+            padding-left: 20px
+            li
+                font-size: 16px
+                font-size: 1.6rem
+                color: $black
+
+        > ul
+            list-style: disc
+            padding-left: 20px
+            li
+                font-size: 16px
+                font-size: 1.6rem
+                color: $black
+
+        img
+            width: 100%
+            max-width: 640px

@@ -1,0 +1,55 @@
+fieldset
+    width: 100%
+    padding: 0
+    margin-bottom: 30px
+
+    &:last-child
+        margin-bottom: 0
+
+    .input__title
+        color: $black
+        font-size: 16px
+        font-size: 1.6rem
+        padding: 10px
+
+    .input--required
+        margin-right: 10px
+        color: $red
+
+
+    input
+        max-width: 640px
+        width: 100%
+        height: 56px
+        border: solid 1px $black
+        outline: none
+        padding: 10px 20px
+        background-color: #f6f6f6
+        font-size: 16px
+        font-size: 1.6rem
+        color: $black
+
+        &::placeholder
+            color: rgba($black, .3)
+
+    textarea
+        border: solid 1px $black
+        color: $black
+        width: 100%
+        height: 210px
+        padding: 25px
+        resize: none
+        font-size: 16px
+        font-size: 1.6rem
+
+        &::placeholder
+            color: rgba($black, .3)
+
+.form__container
+    margin: 0 auto
+    width: 100%
+    max-width: 480px
+    position: relative
+    +pad
+        max-width: 640px
+        padding: 0 20px

@@ -1,0 +1,7 @@
+include ../organisms/_jarallaxBackground
+
+mixin background(src)
+    -src = src || "https://images.pexels.com/photos/6963925/pexels-photo-6963925.jpeg"
+
+    section.section.background.minus-mt-100
+        +jarallaxBackground(src)

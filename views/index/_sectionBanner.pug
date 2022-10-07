@@ -1,0 +1,9 @@
+include ../components/organisms/_jarallaxYoutube
+
+mixin sectionBanner(src)
+    - src = src || 'https://youtu.be/w-wnanr0CxQ'
+
+    section.section.banner
+        .overlay_mask
+            +jarallaxYouTube(src)(class="delay_show opacity-0")
+
