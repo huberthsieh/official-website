@@ -2,6 +2,8 @@
 可以高度自由客製的預處理器網站模板  
 This is a website witch can be customized by yourself style.
 
+[Demo](https://huberthsieh.github.io/bearloan-official-website/public/)
+
 
 ### 使用技術
 - pug
